@@ -3,6 +3,7 @@ package database.tables;
 import com.google.gson.Gson;
 import database.DB_Connection;
 import mainClasses.Admin;
+import mainClasses.Applicant;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,28 +12,28 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditAdminsTable extends Admin {
+public class EditApplicantsTable extends Applicant {
 
-    public void createAdminTable() throws SQLException, ClassNotFoundException {
+    public void createApplicantTable() throws SQLException, ClassNotFoundException {
 
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
-        String query = "CREATE TABLE admins "
+        String query = "CREATE TABLE applicants "
                 + "(ID INTEGER NOT NULL UNIQUE, "
                 + " EmployeeName char(255),"
                 + " Age INTEGER,"
                 + " Salary INTEGER,"
                 + " HierarchicalPosition INTEGER,"
-                + " RoomID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT"
+                + " Priority INTEGER "
                 + ")";
         stmt.execute(query);
         stmt.close();
 
-        insertdefaultadminvalues();
+        insertdefaultapplicantvalues();
     }
 
-    public void insertdefaultadminvalues(){
+    public void insertdefaultapplicantvalues(){
         try {
             Connection con = null;
             try {
@@ -44,67 +45,68 @@ public class EditAdminsTable extends Admin {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (1234, 'tsoukos', 22, 750, 1)";
+                    + " applicants (ID, EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " VALUES (321, 'mhtsos', 22, 750, 1, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The admin was successfully added in the database.");
+            System.out.println("# The applicant was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (4321, 'sfalmas', 21, 650, 2)";
+                    + " applicants (ID, EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " VALUES (23, 'farmas', 21, 650, 2, 4)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
-            System.out.println("# The admin2 was successfully added in the database.");
+            System.out.println("# The applicant2 was successfully added in the database.");
 
             stmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EditAdminsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditApplicantsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void addNewAdmin(Admin admin) throws ClassNotFoundException {
+    public void addNewApplicant(Applicant applicant) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition)"
+                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
                     + " VALUES ("
-                    + "'" + admin.getID() + "',"
-                    + "'" + admin.getEmployeeName() + "',"
-                    + "'" + admin.getAge() + "',"
-                    + "'" + admin.getSalary() + "',"
-                    + "'" + admin.getHierarchicalPosition() + "'"
+                    + "'" + applicant.getID() + "',"
+                    + "'" + applicant.getEmployeeName() + "',"
+                    + "'" + applicant.getAge() + "',"
+                    + "'" + applicant.getSalary() + "',"
+                    + "'" + applicant.getHierarchicalPosition() + "',"
+                    + "'" + applicant.getPriority() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The admin was successfully added in the database.");
+            System.out.println("# The applicant was successfully added in the database.");
 
             /* Get the member id from the database and set it to the member */
             stmt.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(EditAdminsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditApplicantsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static Admin databaseToAdmin(String adminID) throws SQLException, ClassNotFoundException{
+    public static Applicant databaseToApplicant(String applicantID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM admins WHERE ID = '" + adminID + "'");
+            rs = stmt.executeQuery("SELECT * FROM applicants WHERE ID = '" + applicantID + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();
-            Admin admin = gson.fromJson(json, Admin.class);
-            return admin;
+            Applicant applicant = gson.fromJson(json, Applicant.class);
+            return applicant;
         } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
@@ -113,6 +115,5 @@ public class EditAdminsTable extends Admin {
         return null;
     }
 
+
 }
-
-

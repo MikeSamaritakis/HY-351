@@ -8,6 +8,7 @@ package database.init;
 import static database.DB_Connection.getInitialConnection;
 
 import database.tables.EditAdminsTable;
+import database.tables.EditApplicantsTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -46,5 +47,8 @@ public class InitDatabase {
     public void initTables() throws SQLException, ClassNotFoundException {
         EditAdminsTable eat = new EditAdminsTable();
         eat.createAdminTable();
+
+        EditApplicantsTable eat2 = new EditApplicantsTable();
+        eat2.createApplicantTable();
     }
 }

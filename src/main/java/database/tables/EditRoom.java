@@ -3,6 +3,7 @@ package database.tables;
 import com.google.gson.Gson;
 import database.DB_Connection;
 import mainClasses.Admin;
+import mainClasses.Room;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditAdminsTable extends Admin {
+public class EditRoom extends Room {
 
     public void createAdminTable() throws SQLException, ClassNotFoundException {
 
@@ -114,5 +115,3 @@ public class EditAdminsTable extends Admin {
     }
 
 }
-
-
