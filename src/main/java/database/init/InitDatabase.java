@@ -6,8 +6,9 @@
 package database.init;
 
 import static database.DB_Connection.getInitialConnection;
-import database.tables.EditDoctorTable;
-import database.tables.EditSimpleUserTable;
+
+import database.tables.EditAdminsTable;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,10 +44,7 @@ public class InitDatabase {
     }
 
     public void initTables() throws SQLException, ClassNotFoundException {
-        EditSimpleUserTable eut = new EditSimpleUserTable();
-        eut.createSimpleUserTable();
-
-        EditDoctorTable edt = new EditDoctorTable();
-        edt.createDoctorTable();
+        EditAdminsTable eat = new EditAdminsTable();
+        eat.createAdminTable();
     }
 }

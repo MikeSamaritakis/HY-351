@@ -2,7 +2,7 @@ package mainClasses;
 
 public class Employee {
     int ID;
-    String Name;
+    String EmployeeName;
     int Age;
     int Salary;
     int HierarchicalPosition;
@@ -11,16 +11,16 @@ public class Employee {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int id) {
+        ID = id;
     }
 
-    public String getName() {
-        return Name;
+    public String getEmployeeName() {
+        return EmployeeName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setEmployeeName(String name) {
+        EmployeeName = name;
     }
 
     public int getAge() {
