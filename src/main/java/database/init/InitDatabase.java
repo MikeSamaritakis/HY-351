@@ -9,6 +9,8 @@ import static database.DB_Connection.getInitialConnection;
 
 import database.tables.EditAdminsTable;
 import database.tables.EditApplicantsTable;
+import database.tables.EditFavoritesTable;
+import database.tables.EditInvitationsTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -50,5 +52,11 @@ public class InitDatabase {
 
         EditApplicantsTable eat2 = new EditApplicantsTable();
         eat2.createApplicantTable();
+
+        EditFavoritesTable eft = new EditFavoritesTable();
+        eft.createFavoritesTable();
+
+        EditInvitationsTable eit = new EditInvitationsTable();
+        eit.createInvitationsTable();
     }
 }
