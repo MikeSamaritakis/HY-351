@@ -7,10 +7,7 @@ package database.init;
 
 import static database.DB_Connection.getInitialConnection;
 
-import database.tables.EditAdminsTable;
-import database.tables.EditApplicantsTable;
-import database.tables.EditFavoritesTable;
-import database.tables.EditInvitationsTable;
+import database.tables.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -58,5 +55,11 @@ public class InitDatabase {
 
         EditInvitationsTable eit = new EditInvitationsTable();
         eit.createInvitationsTable();
+
+        EditRoomsTable ert = new EditRoomsTable();
+        ert.createRoomTable();
+
+        EditReservationsTable ert2 = new EditReservationsTable();
+        ert2.createReservationTable();
     }
 }

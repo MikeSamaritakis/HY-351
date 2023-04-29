@@ -2,36 +2,35 @@ package database.tables;
 
 import com.google.gson.Gson;
 import database.DB_Connection;
-import mainClasses.Favorites;
-import mainClasses.Invitation;
+import mainClasses.Applicant;
+import mainClasses.Reservation;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditInvitationsTable extends Invitation {
+public class EditReservationsTable extends Reservation {
 
-    public void createInvitationsTable() throws SQLException, ClassNotFoundException {
+    public void createReservationTable() throws SQLException, ClassNotFoundException {
 
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
-        String query = "CREATE TABLE invitations "
-                + "(ContactInfo BIGINT NOT NULL , "
-                + " RoomID INTEGER NOT NULL , "
-                + " invdate char(255) NOT NULL "
+        String query = "CREATE TABLE reservations "
+                + "(resdate char(255), "
+                + " ReserverID INTEGER,"
+                + " RoomID INTEGER NOT NULL"
                 + ")";
         stmt.execute(query);
         stmt.close();
 
-        insertdefaultinvitationsvalues();
+        insertdefaultreservatationvalues();
     }
 
-    public void insertdefaultinvitationsvalues(){
+    public void insertdefaultreservatationvalues(){
         try {
             Connection con = null;
             try {
@@ -43,72 +42,71 @@ public class EditInvitationsTable extends Invitation {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " invitations (ContactInfo, invdate, RoomID)"
-                    + " VALUES (6906120834, 2022-11-30, 2)";
+                    + " reservations (resdate, ReserverID, RoomID)"
+                    + " VALUES ('31/12/2007', 1234, 2)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The invitation was successfully added in the database.");
+            System.out.println("# The reservation was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " invitations (ContactInfo, invdate, RoomID)"
-                    + " VALUES (6977997200, 2029-04-10, 1)";
+                    + " reservations (resdate, ReserverID, RoomID)"
+                    + " VALUES ('31/12/2032', 4321, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
-            System.out.println("# The invitation2 was successfully added in the database.");
+            System.out.println("# The reservation2 was successfully added in the database.");
 
             stmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EditInvitationsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditReservationsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void addNewInvitation(Invitation invitation) throws ClassNotFoundException {
+    public void addNewReservation(Reservation reservation) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " invitations (ContactInfo, invdate, RoomID)"
+                    + " reservations (resdate, ReserverID, RoomID)"
                     + " VALUES ("
-                    + "'" + invitation.getContactInfo() + "',"
-                    + "'" + invitation.getDate() + "',"
-                    + "'" + invitation.getRoomID() + "'"
+                    + "'" + reservation.getDate() + "',"
+                    + "'" + reservation.getReserverID() + "',"
+                    + "'" + reservation.getRoomID() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The invitation was successfully added in the database.");
+            System.out.println("# The reservation was successfully added in the database.");
 
             /* Get the member id from the database and set it to the member */
             stmt.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(EditInvitationsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditReservationsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static Invitation databaseToInvitation(int contactinfo, String invdate, int roomID) throws SQLException, ClassNotFoundException{
+    public static Reservation databaseToReservation(int reserverID, int roomID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM invitations WHERE RoomID = '" + roomID + "'AND invdate = '" + invdate + "'AND ContactInfo = '" + contactinfo + "'");
+            rs = stmt.executeQuery("SELECT * FROM reservations WHERE RoomID = '" + roomID + "'AND ReserverID = '" + reserverID + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();
-            Invitation invitation = gson.fromJson(json, Invitation.class);
-            return invitation;
+            Reservation reservation = gson.fromJson(json, Reservation.class);
+            return reservation;
         } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
-            System.out.println("The given invitation does not exist.");
+            System.out.println("The given reservationID does not exist.");
         }
         return null;
     }
-
 
 }

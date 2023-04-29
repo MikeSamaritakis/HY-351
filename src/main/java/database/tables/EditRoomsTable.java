@@ -12,28 +12,26 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditRoom extends Room {
+public class EditRoomsTable extends Room {
 
-    public void createAdminTable() throws SQLException, ClassNotFoundException {
+    public void createRoomTable() throws SQLException, ClassNotFoundException {
 
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
-        String query = "CREATE TABLE admins "
-                + "(ID INTEGER NOT NULL UNIQUE, "
-                + " EmployeeName char(255),"
-                + " Age INTEGER,"
-                + " Salary INTEGER,"
-                + " HierarchicalPosition INTEGER,"
-                + " RoomID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT"
+        String query = "CREATE TABLE rooms "
+                + "(RoomID INTEGER NOT NULL UNIQUE, "
+                + " Capacity INTEGER,"
+                + " Availability INTEGER,"
+                + " EquipmentType INTEGER"
                 + ")";
         stmt.execute(query);
         stmt.close();
 
-        insertdefaultadminvalues();
+        insertdefaultroomvalues();
     }
 
-    public void insertdefaultadminvalues(){
+    public void insertdefaultroomvalues(){
         try {
             Connection con = null;
             try {
@@ -45,71 +43,70 @@ public class EditRoom extends Room {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (1234, 'tsoukos', 22, 750, 1)";
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
+                    + " VALUES (2, 24, 2, 13)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The admin was successfully added in the database.");
+            System.out.println("# The room was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (4321, 'sfalmas', 21, 650, 2)";
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
+                    + " VALUES (3, 25, 3, 14)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
-            System.out.println("# The admin2 was successfully added in the database.");
+            System.out.println("# The room2 was successfully added in the database.");
 
             stmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EditAdminsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditRoomsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void addNewAdmin(Admin admin) throws ClassNotFoundException {
+    public void addNewRoom(Room room) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES ("
-                    + "'" + admin.getID() + "',"
-                    + "'" + admin.getEmployeeName() + "',"
-                    + "'" + admin.getAge() + "',"
-                    + "'" + admin.getSalary() + "',"
-                    + "'" + admin.getHierarchicalPosition() + "'"
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
+                    + " VALUES  ("
+                    + "'" + room.getRoomID() + "',"
+                    + "'" + room.getCapacity() + "',"
+                    + "'" + room.getAvailability() + "',"
+                    + "'" + room.getEquipementType() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
-            System.out.println("# The admin was successfully added in the database.");
+            System.out.println("# The room was successfully added in the database.");
 
             /* Get the member id from the database and set it to the member */
             stmt.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(EditAdminsTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditRoomsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static Admin databaseToAdmin(String adminID) throws SQLException, ClassNotFoundException{
+    public static Room databaseToRoom(String roomID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM admins WHERE ID = '" + adminID + "'");
+            rs = stmt.executeQuery("SELECT * FROM rooms WHERE RoomID = '" + roomID + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();
-            Admin admin = gson.fromJson(json, Admin.class);
-            return admin;
+            Room room = gson.fromJson(json, Room.class);
+            return room;
         } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
-            System.out.println("The given ID does not exist.");
+            System.out.println("The given Room does not exist.");
         }
         return null;
     }
