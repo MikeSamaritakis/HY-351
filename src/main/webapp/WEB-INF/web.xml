@@ -8,4 +8,18 @@
             30
         </session-timeout>
     </session-config>
+    <display-name>Login</display-name>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Servlets.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>Login</url-pattern>
+    </servlet-mapping>
+
+    <!--Defines the welcome page.-->
+    <welcome-file-list>
+        <welcome-file>loginpage.html</welcome-file>
+    </welcome-file-list>
 </web-app>

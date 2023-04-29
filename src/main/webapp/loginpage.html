@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <script src="functions.js"></script>
+    <title>LoginPage</title>
+</head>
+
+<body>
+<!--    <div id="header">-->
+<!--        <button class="btn" id="create_btn">Create Database</button>-->
+<!--        <button class="btn" id="drop_btn">Drop Database</button>-->
+<!--        <button class="btn" id="reg_doc_btn">Register Doctor</button>-->
+<!--        <button class="btn" id="reg_user_btn">Register User</button>-->
+<!--        <button class="btn" id="login_btn">Login</button>-->
+<!--    </div>-->
+<!--    <div class="content" id="content_empty"> </div>-->
+<!--    <div class="content" id="content_form">-->
+<!--        <form id="reg_form">-->
+<!--            <label for="reg_username">Username</label>-->
+<!--            <input type="text" id="reg_username" name="reg_username" value="">-->
+<!--            <label for="reg_pass">Password</label>-->
+<!--            <input type="password" id="reg_pass" name="reg_pass" value="">-->
+<!--            <label for="reg_email">Email</label>-->
+<!--            <input type="email" id="reg_email" name="reg_email" value="">-->
+<!--            <input type="submit" id="reg_submit" value="Submit">-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="content" id="content_logged_in">-->
+<!--        <form id="login_form">-->
+<!--            <label for="login_username">Username</label>-->
+<!--            <input type="text" id="login_username" name="login_username" value="">-->
+<!--            <label for="login_pass">Password</label>-->
+<!--            <input type="password" id="login_pass" name="login_pass" value="">-->
+<!--            <input type="submit" value="Confirm">-->
+<!--        </form>-->
+<!--        <div id="logged_in_container" style="display: none;">-->
+<!--            <div id="side-bar">-->
+<!--                <button class="action-btn" id="logout_btn">Logout</button>-->
+<!--                <button class="action-btn" id="show_all_users_btn">Show Users</button>-->
+<!--            </div>-->
+<!--            <div id="main-bar">-->
+<!--                <span>Usernames</span>-->
+<!--                <div id="users_container"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div id="footer">-->
+<!--        <span id="footer_info_span"></span>-->
+<!--    </div>-->
+<!--    -->
+
+
+    <div class="loginbuttons">
+        <button class="buttonloginasadmin" name="Login" onclick='showLoginasAdmin()'>Login as Admin</button>
+        <button class="buttonloginasapplicant" name="Login" onclick='showLoginasApplicant()'>Login as Applicant</button>
+
+        <form id="loginasadmin" method="post" action="Servlets.Login" style="display: none">
+            <div class="container" style="background-color: transparent">
+
+                <h1> Login Form</h1>
+
+                <div class="pad">
+                    <label style="margin-right: 90%;"><b> Admin ID :</b></label>
+                    <input type="text" name="adminID" placeholder= "ADMIN ID" size="15" required/>
+                </div>
+
+                <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Admin</button>
+
+            </div>
+        </form>
+
+        <form id="loginasapplicant" method="get" action="Servlets.Login" style="display: none">
+            <div class="container" style="background-color: transparent">
+
+                <h1> Login Form</h1>
+
+                <div class="pad">
+                    <label style="margin-right: 90%;"><b> Applicant ID :</b></label>
+                    <input type="text" name="applicantID" placeholder= "APPLICANT ID" size="15" required/>
+                </div>
+
+                <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Applicant</button>
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>
