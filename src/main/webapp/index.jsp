@@ -11,39 +11,47 @@
 </head>
 
 <body>
-<div class="loginbuttons">
+
+<div class="buttons">
     <button class="buttonloginasadmin" name="Login" onclick='showLoginasAdmin()'>Login as Admin</button>
     <button class="buttonloginasapplicant" name="Login" onclick='showLoginasApplicant()'>Login as Applicant</button>
-
-    <form id="loginasadmin" method="post" action="Servlets.Login" style="display: none">
-        <div class="container" style="background-color: transparent">
-
-            <h1> Login Form</h1>
-
-            <div class="pad">
-                <label style="margin-right: 90%;"><b> Admin ID :</b></label>
-                <input type="text" name="adminID" placeholder= "ADMIN ID" size="15" required/>
-            </div>
-
-            <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Admin</button>
-
-        </div>
-    </form>
-
-    <form id="loginasapplicant" method="get" action="Servlets.Login" style="display: none">
-        <div class="container" style="background-color: transparent">
-
-            <h1> Login Form</h1>
-
-            <div class="pad">
-                <label style="margin-right: 90%;"><b> Applicant ID :</b></label>
-                <input type="text" name="applicantID" placeholder= "APPLICANT ID" size="15" required/>
-            </div>
-
-            <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Applicant</button>
-
-        </div>
-    </form>
 </div>
+
+<form id="loginasadmin" method="post" action="/AdminLogin" style="display: none">
+
+    <div class="container" style="background-color: transparent">
+        <h1> Login Form</h1>
+
+        <div class="pad">
+            <label style="margin-right: 90%;"><b> Admin ID :</b></label>
+            <input type="number" name="adminID" placeholder= "ADMIN ID" size="15" required/>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Admin</button>
+        </div>
+
+    </div>
+
+</form>
+
+<form id="loginasapplicant" method="post" action="/ApplicantLogin" style="display: none">
+
+    <div class="container" style="background-color: transparent">
+        <h1> Login Form</h1>
+
+        <div class="pad">
+            <label style="margin-right: 90%;"><b> Applicant ID :</b></label>
+            <input type="number" name="applicantID" placeholder= "APPLICANT ID" size="15" required/>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="loginbuttonsubmit" value="Call Servlet">Login as Applicant</button>
+        </div>
+
+    </div>
+
+</form>
+
 </body>
 </html>
