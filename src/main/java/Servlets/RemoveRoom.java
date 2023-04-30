@@ -1,5 +1,7 @@
 package Servlets;
 
+import database.tables.EditRoomsTable;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -15,6 +17,15 @@ public class RemoveRoom extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //remove a room
+        String roomID = request.getParameter("roomID");
 
+        EditRoomsTable ert = new EditRoomsTable();
+
+        try {
+            ert.deleteRoom(roomID);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

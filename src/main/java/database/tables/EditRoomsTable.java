@@ -111,4 +111,23 @@ public class EditRoomsTable extends Room {
         return null;
     }
 
+    public static void deleteRoom(String roomID) throws ClassNotFoundException{
+        try {
+            Connection con = DB_Connection.getConnection();
+
+            Statement stmt = con.createStatement();
+
+            String insertQuery = "DELETE FROM rooms WHERE RoomID = '" + roomID + "'";
+            //stmt.execute(table);
+            System.out.println(insertQuery);
+            stmt.executeUpdate(insertQuery);
+            System.out.println("# The room was successfully deleted from the database.");
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditRoomsTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
