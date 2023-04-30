@@ -20,9 +20,10 @@ public class EditReservationsTable extends Reservation {
         Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE reservations "
-                + "(resdate char(255), "
+                + "(ReservationID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, "
+                + " resdate char(255), "
                 + " ReserverID INTEGER,"
-                + " RoomID INTEGER NOT NULL"
+                + " RoomID INTEGER NOT NULL "
                 + ")";
         stmt.execute(query);
         stmt.close();

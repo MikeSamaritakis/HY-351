@@ -8,15 +8,56 @@
 <!--            30-->
 <!--        </session-timeout>-->
 <!--    </session-config>-->
-    <display-name>Login</display-name>
     <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>Servlets.Login</servlet-class>
+        <servlet-name>AddRoom</servlet-name>
+        <servlet-class>Servlets.AddRoom</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>Servlets.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplicantLogin</servlet-name>
+        <servlet-class>Servlets.ApplicantLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveRequest</servlet-name>
+        <servlet-class>Servlets.ApproveRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyRequest</servlet-name>
+        <servlet-class>Servlets.DenyRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveRoom</servlet-name>
+        <servlet-class>Servlets.RemoveRoom</servlet-class>
+    </servlet>
+
     <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>Login</url-pattern>
+        <servlet-name>AddRoom</servlet-name>
+        <url-pattern>/AddRoom/*</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/AdminLogin/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplicantLogin</servlet-name>
+        <url-pattern>/ApplicantLogin/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveRequest</servlet-name>
+        <url-pattern>/ApproveRequest/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyRequest</servlet-name>
+        <url-pattern>/DenyRequest/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveRoom</servlet-name>
+        <url-pattern>/RemoveRoom/*</url-pattern>
+    </servlet-mapping>
+
 
     <!--Defines the welcome page.-->
     <welcome-file-list>

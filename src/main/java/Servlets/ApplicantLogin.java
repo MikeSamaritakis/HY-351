@@ -9,12 +9,16 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet()
-public class Login extends HttpServlet {
+@WebServlet(name = "ApplicantLogin", value = "/ApplicantLogin")
+public class ApplicantLogin extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //doGet is for Applicant Login
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //doPost is for Applicant Login
         String applicantID = request.getParameter("applicantID");
 
         Applicant applicant = new Applicant();
@@ -41,13 +45,5 @@ public class Login extends HttpServlet {
         page="applicanthomepage.html";
         RequestDispatcher dd =request.getRequestDispatcher(page);
         dd.forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //doPost is for Admin Login
-        String applicantID = request.getParameter("adminID");
-
-
     }
 }
