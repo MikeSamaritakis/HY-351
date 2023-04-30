@@ -20,10 +20,11 @@ public class EditRoomsTable extends Room {
         Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE rooms "
-                + "(RoomID INTEGER NOT NULL UNIQUE, "
+                + "(RoomID INTEGER NOT NULL UNIQUE PRIMARY KEY, "
                 + " Capacity INTEGER,"
                 + " Availability INTEGER,"
-                + " EquipmentType INTEGER"
+                + " EquipmentType INTEGER, "
+                + " AdminID INTEGER NOT NULL"
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -43,16 +44,16 @@ public class EditRoomsTable extends Room {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
-                    + " VALUES (2, 24, 2, 13)";
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType, AdminID)"
+                    + " VALUES (2, 24, 2, 13, 77)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
             System.out.println("# The room was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
-                    + " VALUES (3, 25, 3, 14)";
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType, AdminID)"
+                    + " VALUES (3, 25, 3, 14, 80)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
@@ -71,12 +72,13 @@ public class EditRoomsTable extends Room {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " rooms (RoomID, Capacity, Availability, EquipmentType)"
+                    + " rooms (RoomID, Capacity, Availability, EquipmentType, AdminID)"
                     + " VALUES  ("
                     + "'" + room.getRoomID() + "',"
                     + "'" + room.getCapacity() + "',"
                     + "'" + room.getAvailability() + "',"
-                    + "'" + room.getEquipementType() + "'"
+                    + "'" + room.getEquipementType() + "', "
+                    + "'" + room.getAdminID() + "' "
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);

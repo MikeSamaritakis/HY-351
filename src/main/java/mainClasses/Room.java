@@ -38,4 +38,12 @@ public class Room {
     public void setEquipementType(int equipementType) {
         EquipementType = equipementType;
     }
+
+    public int getAdminID() {
+        return AdminID;
+    }
+
+    public void setAdminID(int adminID) {
+        AdminID = adminID;
+    }
 }
