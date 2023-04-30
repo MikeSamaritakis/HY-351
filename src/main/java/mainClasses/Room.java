@@ -3,7 +3,6 @@ package mainClasses;
 public class Room {
     int RoomID;
     int Capacity;
-    int Availability;
     int EquipementType;
     int AdminID;
 
@@ -21,14 +20,6 @@ public class Room {
 
     public void setCapacity(int capacity) {
         Capacity = capacity;
-    }
-
-    public int getAvailability() {
-        return Availability;
-    }
-
-    public void setAvailability(int availability) {
-        Availability = availability;
     }
 
     public int getEquipementType() {
