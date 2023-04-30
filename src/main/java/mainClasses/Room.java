@@ -5,6 +5,7 @@ public class Room {
     int Capacity;
     int Availability;
     int EquipementType;
+    int AdminID;
 
     public int getRoomID() {
         return RoomID;
