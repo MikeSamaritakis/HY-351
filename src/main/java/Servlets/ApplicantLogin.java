@@ -12,9 +12,12 @@ import java.sql.SQLException;
 @WebServlet(name = "ApplicantLogin", value = "/ApplicantLogin")
 public class ApplicantLogin extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Applicant Login
         String applicantID = request.getParameter("applicantID");
 
