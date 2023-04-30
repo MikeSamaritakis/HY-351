@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="lab_example_web" options="-endorseddirs C:\Users\samao\IdeaProjects\HY-351\target/endorsed" />
+      <module name="lab_example_web" options="-endorseddirs C:\Users\Lefteris\IdeaProjects\HY-351\target/endorsed" />
     </option>
   </component>
 </project>
