@@ -1,5 +1,8 @@
 package Servlets;
 
+import database.tables.EditRoomsTable;
+import mainClasses.Room;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -21,6 +24,18 @@ public class AddRoom extends HttpServlet {
         String equipmenttype = request.getParameter("equipmenttype");
         String adminID = request.getParameter("adminID");
 
+        Room room = new Room();
+        room.setRoomID(Integer.parseInt(roomID));
+        room.setCapacity(Integer.parseInt(capacity));
+        room.setEquipementType(Integer.parseInt(equipmenttype));
+        room.setAdminID(Integer.parseInt(adminID));
 
+        EditRoomsTable ert = new EditRoomsTable();
+        try {
+            ert.addNewRoom(room);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        response.sendRedirect("adminhomepage.html");
     }
 }
