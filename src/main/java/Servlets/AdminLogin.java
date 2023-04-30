@@ -20,20 +20,18 @@ public class AdminLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Admin Login
         String adminID = request.getParameter("adminID");
-
+        int adminidint = Integer.parseInt(adminID);
         Admin admin = new Admin();
         String page = "";
 
         try {
             admin = EditAdminsTable.databaseToAdmin(adminID);
         } catch (SQLException e) {
-            page = "loginpage.html";
-            RequestDispatcher dd =request.getRequestDispatcher(page);
-            dd.forward(request,response);
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
         if (admin == null){
             page = "loginpage.html";
             RequestDispatcher dd =request.getRequestDispatcher(page);
@@ -42,8 +40,6 @@ public class AdminLogin extends HttpServlet {
         // If the log-in fails then an exception is thrown meaning that the user will not see the
         // page created as a welcome user, thus he/she will not have access to any sensitive information.
 
-        page="adminhomepage.html";
-        RequestDispatcher dd =request.getRequestDispatcher(page);
-        dd.forward(request,response);
+        response.sendRedirect("/lab_example_web_war_exploded/adminhomepage.html");
     }
 }

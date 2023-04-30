@@ -20,7 +20,7 @@ public class ApplicantLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Applicant Login
         String applicantID = request.getParameter("applicantID");
-
+        int applicantidint = Integer.parseInt(applicantID);
         Applicant applicant = new Applicant();
         String page = "";
 
@@ -34,7 +34,7 @@ public class ApplicantLogin extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if (applicant == null){
+        if (applicant.getID() != applicantidint){
             page = "loginpage.html";
             RequestDispatcher dd =request.getRequestDispatcher(page);
             dd.forward(request,response);
@@ -42,8 +42,6 @@ public class ApplicantLogin extends HttpServlet {
         // If the log-in fails then an exception is thrown meaning that the user will not see the
         // page created as a welcome user, thus he/she will not have access to any sensitive information.
 
-        page="applicanthomepage.html";
-        RequestDispatcher dd =request.getRequestDispatcher(page);
-        dd.forward(request,response);
+        response.sendRedirect("/lab_example_web_war_exploded/applicanthomepage.html");
     }
 }

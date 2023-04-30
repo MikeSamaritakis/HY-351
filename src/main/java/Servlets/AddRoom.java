@@ -36,6 +36,7 @@ public class AddRoom extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("adminhomepage.html");
+
+        response.sendRedirect("/lab_example_web_war_exploded/adminhomepage.html");
     }
 }
