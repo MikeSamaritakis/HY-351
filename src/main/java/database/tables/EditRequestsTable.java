@@ -20,7 +20,7 @@ public class EditRequestsTable extends Request {
 
         String query = "CREATE TABLE requests "
                 + "(ReqID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,"
-                + " DateReq char(255) NOT NULL UNIQUE, "
+                + " DateReq char(255) NOT NULL , "
                 + " ReserverIDReq INTEGER NOT NULL, "
                 + " RoomIDReq INTEGER NOT NULL"
                 + ")";

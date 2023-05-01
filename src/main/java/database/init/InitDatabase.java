@@ -61,5 +61,8 @@ public class InitDatabase {
 
         EditReservationsTable ert2 = new EditReservationsTable();
         ert2.createReservationTable();
+
+        EditRequestsTable ert3 = new EditRequestsTable();
+        ert3.createRequestTable();
     }
 }
