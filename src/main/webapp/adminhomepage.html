@@ -12,7 +12,7 @@
 
 <body>
   <h1>AdminHomePage</h1>
-  <form id="adminapprovedenyrequest" method="post" action="ApproveRequest/" style="display: block">
+  <form id="adminapprovedenyrequest" method="post" action="ApproveRequest" style="display: block">
 
     <div class="buttons">
 
@@ -39,7 +39,7 @@
 
   </form>
 
-  <form id="removeroom" method="post" action="RemoveRoom/" style="display: block">
+  <form id="removeroom" method="post" action="RemoveRoom" style="display: block">
 
     <div class="buttons">
 
@@ -60,7 +60,7 @@
 
   </form>
 
-  <form id="addroom" method="post" action="AddRoom/" style="display: block">
+  <form id="addroom" method="post" action="AddRoom" style="display: block">
 
     <div class="buttons">
 
@@ -94,6 +94,14 @@
 
     </div>
 
+  </form>
+
+  <form id="request" method="post" action="ApproveRequest" style="display: block">
+    <label style="margin-right: 90%;"><b> Room ID :</b></label>
+    <input type="number" name="roomID" placeholder= "ROOM ID" size="15" required/>
+
+    <button type="submit" class="approverequest" value="Call Servlet">Approve Request</button>
+    <button type="submit" class="denyrequest" formaction="DenyRequest" value="Call Servlet">Deny Request</button>
   </form>
 </body>
 </html>
