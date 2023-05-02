@@ -89,7 +89,7 @@ public class EditRequestsTable extends Request {
         }
     }
 
-    public static Request databaseToRequest(int reqID) throws SQLException, ClassNotFoundException{
+    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 

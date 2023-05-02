@@ -2,19 +2,14 @@ package Servlets;
 
 import database.tables.EditRequestsTable;
 import database.tables.EditReservationsTable;
-import database.tables.EditRoomsTable;
 import mainClasses.Request;
 import mainClasses.Reservation;
-import mainClasses.Room;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @WebServlet()
 public class ApproveRequest extends HttpServlet {
@@ -24,7 +19,6 @@ public class ApproveRequest extends HttpServlet {
         //System.out.println("APPROVE REQUEST");
 
         String requestID = request.getParameter("requestID");
-        int resID = Integer.parseInt(requestID);
 
         Request dbrequest;
         Reservation reservation = new Reservation();
@@ -33,10 +27,14 @@ public class ApproveRequest extends HttpServlet {
         EditReservationsTable res = new EditReservationsTable();
 
         try {
-            dbrequest = req.databaseToRequest(resID);
+            dbrequest = req.databaseToRequest(requestID);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+//        String tmp;
+//        tmp = dbrequest.getDatereq();
+//        System.out.println(tmp);
 
         reservation.setDate(dbrequest.getDatereq());
         reservation.setReserverID(dbrequest.getReserverIDreq());
@@ -47,6 +45,12 @@ public class ApproveRequest extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+//        try {
+//            req.deleteRequest(requestID);
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
 
         response.sendRedirect("/lab_example_web_war_exploded/adminhomepage.html");
     }
