@@ -27,14 +27,11 @@ public class ApplicantLogin extends HttpServlet {
         try {
             applicant = EditApplicantsTable.databaseToApplicant(applicantID);
         } catch (SQLException e) {
-            page = "loginpage.html";
-            RequestDispatcher dd =request.getRequestDispatcher(page);
-            dd.forward(request,response);
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if (applicant.getID() != applicantidint){
+        if (applicant == null){
             page = "loginpage.html";
             RequestDispatcher dd =request.getRequestDispatcher(page);
             dd.forward(request,response);
