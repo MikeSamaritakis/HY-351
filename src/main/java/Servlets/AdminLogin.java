@@ -19,7 +19,7 @@ public class AdminLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Admin Login
-        String adminID = request.getParameter("adminID");
+        String adminID = request.getParameter("employeeID");
         int adminidint = Integer.parseInt(adminID);
         Admin admin = new Admin();
         String page = "";

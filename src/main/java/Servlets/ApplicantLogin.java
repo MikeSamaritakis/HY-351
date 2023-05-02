@@ -19,7 +19,7 @@ public class ApplicantLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Applicant Login
-        String applicantID = request.getParameter("applicantID");
+        String applicantID = request.getParameter("employeeID");
         int applicantidint = Integer.parseInt(applicantID);
         Applicant applicant = new Applicant();
         String page = "";
