@@ -13,22 +13,15 @@ import java.sql.SQLException;
 public class ApplicantLogin extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Applicant Login
         String applicantID = request.getParameter("employeeID");
-        int applicantidint = Integer.parseInt(applicantID);
-        Applicant applicant = new Applicant();
-        String page = "";
+        Applicant applicant;
+        String page;
 
         try {
             applicant = EditApplicantsTable.databaseToApplicant(applicantID);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         if (applicant == null){

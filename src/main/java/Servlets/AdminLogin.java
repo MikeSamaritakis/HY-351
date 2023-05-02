@@ -13,22 +13,15 @@ import java.sql.SQLException;
 public class AdminLogin extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doPost is for Admin Login
         String adminID = request.getParameter("employeeID");
-        int adminidint = Integer.parseInt(adminID);
-        Admin admin = new Admin();
-        String page = "";
+        Admin admin;
+        String page;
 
         try {
             admin = EditAdminsTable.databaseToAdmin(adminID);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
