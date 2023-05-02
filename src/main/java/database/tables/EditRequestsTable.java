@@ -109,13 +109,13 @@ public class EditRequestsTable extends Request {
         return null;
     }
 
-    public static void deleteRequest(String roomIDreq, String reserverIDreq) throws ClassNotFoundException{
+    public static void deleteRequest(String reqID) throws ClassNotFoundException{
         try {
             Connection con = DB_Connection.getConnection();
 
             Statement stmt = con.createStatement();
 
-            String insertQuery = "SELECT * FROM requests WHERE RoomIDReq = '" + roomIDreq + "'AND reserverIDreq = '" + reserverIDreq + "'";
+            String insertQuery = "DELETE FROM requests WHERE ReqID = '" + reqID + "'";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
