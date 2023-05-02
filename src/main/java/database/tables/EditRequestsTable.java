@@ -89,13 +89,13 @@ public class EditRequestsTable extends Request {
         }
     }
 
-    public static Request databaseToRequest(String roomIDreq, String reserverIDreq) throws SQLException, ClassNotFoundException{
+    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM requests WHERE RoomIDReq = '" + roomIDreq + "'AND reserverIDreq = '" + reserverIDreq + "'");
+            rs = stmt.executeQuery("SELECT * FROM requests WHERE ReqID = '" + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();

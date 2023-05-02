@@ -11,9 +11,7 @@ public class Reservation {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    public void setDate(Date date1) {date = date1;}
 
     public int getReserverID() {
         return ReserverID;
