@@ -38,13 +38,8 @@ public class ApproveRequest extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        System.out.println(dbrequest.getDatereq());
         reservation.setDate(dbrequest.getDatereq());
-
-        System.out.println(dbrequest.getReserverIDreq());
         reservation.setReserverID(dbrequest.getReserverIDreq());
-
-        System.out.println(dbrequest.getRoomIDreq());
         reservation.setRoomID(dbrequest.getRoomIDreq());
 
         try {
