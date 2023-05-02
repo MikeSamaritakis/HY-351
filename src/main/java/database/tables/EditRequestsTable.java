@@ -43,7 +43,7 @@ public class EditRequestsTable extends Request {
 
             String insertQuery = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq)"
-                    + " VALUES ('25-02-2023', 13, 77)";
+                    + " VALUES ('2023-05-30', 13, 77)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
@@ -51,7 +51,7 @@ public class EditRequestsTable extends Request {
 
             String insertQuery2 = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq)"
-                    + " VALUES ('25-02-2023', 43, 3)";
+                    + " VALUES ('2020-12-24', 43, 3)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
@@ -89,13 +89,13 @@ public class EditRequestsTable extends Request {
         }
     }
 
-    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException{
+    public static Request databaseToRequest(int reqID) throws SQLException, ClassNotFoundException{
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM requests WHERE ReqID = '" + "'");
+            rs = stmt.executeQuery("SELECT * FROM requests WHERE ReqID = '" + reqID + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();
@@ -104,7 +104,7 @@ public class EditRequestsTable extends Request {
         } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
-            System.out.println("The given Request does not exist.");
+            System.out.println("The given RequestID does not exist.");
         }
         return null;
     }

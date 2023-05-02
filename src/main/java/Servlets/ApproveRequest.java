@@ -24,9 +24,7 @@ public class ApproveRequest extends HttpServlet {
         //System.out.println("APPROVE REQUEST");
 
         String requestID = request.getParameter("requestID");
-        String sDate1 = null;
-
-        Date date1;
+        int resID = Integer.parseInt(requestID);
 
         Request dbrequest;
         Reservation reservation = new Reservation();
@@ -35,23 +33,18 @@ public class ApproveRequest extends HttpServlet {
         EditReservationsTable res = new EditReservationsTable();
 
         try {
-            dbrequest = req.databaseToRequest(requestID);
+            dbrequest = req.databaseToRequest(resID);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        assert dbrequest != null;
-
-        //Converting String to Date type
-        SimpleDateFormat formatter1=new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            date1=formatter1.parse(sDate1);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
+        System.out.println(dbrequest.getDatereq());
         reservation.setDate(dbrequest.getDatereq());
+
+        System.out.println(dbrequest.getReserverIDreq());
         reservation.setReserverID(dbrequest.getReserverIDreq());
+
+        System.out.println(dbrequest.getRoomIDreq());
         reservation.setRoomID(dbrequest.getRoomIDreq());
 
         try {

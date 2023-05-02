@@ -3,15 +3,15 @@ package mainClasses;
 import java.util.Date;
 
 public class Request {
-    Date datereq;
+    String datereq;
     int ReserverIDreq;
     int RoomIDreq;
 
-    public Date getDatereq() {
+    public String getDatereq() {
         return datereq;
     }
 
-    public void setDatereq(Date date) {
+    public void setDatereq(String date) {
         this.datereq = date;
     }
 

@@ -3,15 +3,15 @@ package mainClasses;
 import java.util.Date;
 
 public class Reservation {
-    Date date;
+    String date;
     int ReserverID;
     int RoomID;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date1) {date = date1;}
+    public void setDate(String date1) {date = date1;}
 
     public int getReserverID() {
         return ReserverID;
