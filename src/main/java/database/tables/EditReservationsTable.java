@@ -64,7 +64,7 @@ public class EditReservationsTable extends Reservation {
         }
     }
 
-    public void addNewReservation(Reservation reservation) throws ClassNotFoundException {
+    public static void addNewReservation(Reservation reservation) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 
