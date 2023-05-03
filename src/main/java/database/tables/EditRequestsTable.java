@@ -16,10 +16,10 @@ public class EditRequestsTable extends Request {
         Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE requests "
-                + "(ReqID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,"
-                + " DateReq char(255) NOT NULL , "
-                + " ReserverIDReq INTEGER NOT NULL, "
-                + " RoomIDReq INTEGER NOT NULL"
+                + "(ReqID INTEGER  UNIQUE PRIMARY KEY AUTO_INCREMENT,"
+                + " DateReq char(255)  , "
+                + " ReserverIDReq INTEGER , "
+                + " RoomIDReq INTEGER "
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -85,66 +85,30 @@ public class EditRequestsTable extends Request {
             Logger.getLogger(EditRequestsTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException {
-        Connection con = null;
-        PreparedStatement stmt = null;
+
+
+
+    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException{
+        Connection con = DB_Connection.getConnection();
+        Statement stmt = con.createStatement();
+
         ResultSet rs;
-        rs = null;
-
         try {
-            con = DB_Connection.getConnection();
-            stmt = con.prepareStatement("SELECT * FROM requests WHERE ReqID = ?");
-            stmt.setString(1, reqID);
-            rs = stmt.executeQuery();
+            rs = stmt.executeQuery("SELECT * FROM requests WHERE RoomIDReq = '" + reqID + "'");
+            rs.next();
+            String json=DB_Connection.getResultsToJSON(rs);
+            Gson gson = new Gson();
+            Request req = gson.fromJson(json, Request.class);
 
-            if (rs.next()) {
-                String json = DB_Connection.getResultsToJSON(rs);
-                Gson gson = new Gson();
-                Request request = gson.fromJson(json, Request.class);
-                return request;
-            } else {
-                System.out.println("The given RequestID does not exist.");
-                return null;
-            }
-        } catch (SQLException e) {
+            return req;
+        } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
-            throw e;
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+            System.out.println("The given RequestID does not exist.");
         }
+        return null;
+
     }
-
-
-//    public static Request databaseToRequest(String reqID) throws SQLException, ClassNotFoundException{
-//        Connection con = DB_Connection.getConnection();
-//        Statement stmt = con.createStatement();
-//        Request  request ;
-//        ResultSet rs;
-//        try {
-//            rs = stmt.executeQuery("SELECT * FROM requests WHERE ReqID = '" + reqID + "'");
-//            rs.next();
-//            String json=DB_Connection.getResultsToJSON(rs);
-//            Gson gson = new Gson();
-//            request = gson.fromJson(json, Request.class);
-//
-//        } catch (Exception e) {
-//            System.out.println("Got an exception! ");
-//            System.err.println(e.getMessage());
-//            System.out.println("The given RequestID does not exist.");
-//            return null;
-//
-//        }
-//        return request ;
-//    }
 
     public static void deleteRequest(String reqID) throws ClassNotFoundException{
         try {
