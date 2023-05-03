@@ -11,5 +11,11 @@ public class MakeRequest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //applicant makes a request
+
+        String applicantID = request.getParameter("applicantID");
+        String date = request.getParameter("date");
+        String roomID = request.getParameter("roomID");
+
+
     }
 }

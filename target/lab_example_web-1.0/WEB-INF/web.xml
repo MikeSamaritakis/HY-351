@@ -29,8 +29,20 @@
         <servlet-class>Servlets.DenyRequest</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MakeRequest</servlet-name>
+        <servlet-class>Servlets.MakeRequest</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RemoveRoom</servlet-name>
         <servlet-class>Servlets.RemoveRoom</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewRequests</servlet-name>
+        <servlet-class>Servlets.ViewRequests</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewRooms</servlet-name>
+        <servlet-class>Servlets.ViewRooms</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -54,8 +66,20 @@
         <url-pattern>/DenyRequest/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>MakeRequest</servlet-name>
+        <url-pattern>/MakeRequest/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RemoveRoom</servlet-name>
         <url-pattern>/RemoveRoom/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewRequests</servlet-name>
+        <url-pattern>/ViewRequests/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewRooms</servlet-name>
+        <url-pattern>/ViewRooms/*</url-pattern>
     </servlet-mapping>
 
 

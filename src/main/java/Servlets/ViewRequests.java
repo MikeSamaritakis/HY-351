@@ -32,7 +32,9 @@ public class ViewRequests extends HttpServlet {
 
         response.setContentType("text/html");
         out.println("<html><body>");
-
+        out.println("<form action=\"http://localhost:8080/lab_example_web_war_exploded/adminhomepage.html\">\n" +
+                "    <input type=\"submit\" value=\"Go back to HomePage\" />\n" +
+                "</form>");
         try {
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(query);
