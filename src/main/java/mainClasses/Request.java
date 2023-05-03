@@ -11,23 +11,23 @@ public class Request {
         return datereq;
     }
 
-    public void setDatereq(String date) {
-        this.datereq = date;
+    public void setDatereq(String datereq) {
+        this.datereq = datereq;
     }
 
     public int getReserverIDreq() {
         return ReserverIDreq;
     }
 
-    public void setReserverIDreq(int reserverID) {
-        ReserverIDreq = reserverID;
+    public void setReserverIDreq(int reserverIDreq) {
+        ReserverIDreq = reserverIDreq;
     }
 
     public int getRoomIDreq() {
         return RoomIDreq;
     }
 
-    public void setRoomIDreq(int roomID) {
-        RoomIDreq = roomID;
+    public void setRoomIDreq(int roomIDreq) {
+        RoomIDreq = roomIDreq;
     }
 }
