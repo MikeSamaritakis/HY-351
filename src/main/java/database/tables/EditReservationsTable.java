@@ -52,7 +52,7 @@ public class EditReservationsTable extends Reservation {
 
             String insertQuery2 = "INSERT INTO "
                     + " reservations (resdate, ReserverID, RoomID)"
-                    + " VALUES ('2032-12-3`', 4321, 1)";
+                    + " VALUES ('2032-12-3', 4321, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);

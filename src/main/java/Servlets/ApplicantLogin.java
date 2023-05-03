@@ -32,6 +32,9 @@ public class ApplicantLogin extends HttpServlet {
         // If the log-in fails then an exception is thrown meaning that the user will not see the
         // page created as a welcome user, thus he/she will not have access to any sensitive information.
 
+        HttpSession session = request.getSession();
+        session.setAttribute("applicantID", applicantID);
+
         response.sendRedirect("/lab_example_web_war_exploded/applicanthomepage.html");
     }
 }
