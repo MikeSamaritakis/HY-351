@@ -28,7 +28,7 @@ public class ViewRooms extends HttpServlet {
         }
 
         ResultSet rs;
-        String query = "select * from requests";
+        String query = "select * from rooms";
 
         response.setContentType("text/html");
         out.println("<html><body>");
@@ -37,13 +37,13 @@ public class ViewRooms extends HttpServlet {
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(query);
             out.println("<table border=1 width=50% height=50%>");
-            out.println("All Requests\n");
+            out.println("All Rooms\n");
             while(rs.next()){
-                String reqid = rs.getString("ReqID");
-                String resid = rs.getString("ReserverIDReq");
-                String datereq = rs.getString("DateReq");
-                String roomid = rs.getString("RoomIDReq");
-                out.println("<tr><td>ID:" + reqid + "</td><td>DATE:" + datereq + "</td><td>ROOM:" + roomid + "</td><td>APPLICANT:" + resid + "</td></tr>");
+                String roomid = rs.getString("RoomID");
+                String capacity = rs.getString("Capacity");
+                String equipmenttype = rs.getString("EquipmentType");
+                String adminid = rs.getString("AdminID");
+                out.println("<tr><td>ROOM ID:" + roomid + "</td><td>CAPACITY:" + capacity + "</td><td>EQUIPMENT:" + equipmenttype + "</td><td>ADMIN:" + adminid + "</td></tr>");
             }
             out.println("</table>");
         } catch (SQLException e) {
