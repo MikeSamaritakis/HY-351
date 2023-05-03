@@ -1,5 +1,6 @@
 package database;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,6 +32,8 @@ public class DB_Connection {
         Class.forName("com.mysql.jdbc.Driver");
         return DriverManager.getConnection(url + ":" + port, username, password);
     }
+
+
 
     public static String getResultsToJSON(ResultSet rs) throws SQLException {
         ResultSetMetaData metadata = rs.getMetaData();
