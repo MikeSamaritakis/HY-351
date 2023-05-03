@@ -28,6 +28,7 @@ public class ApproveRequest extends HttpServlet {
 
         try {
             dbrequest = req.databaseToRequest(requestID);
+            System.out.println(requestID);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +36,8 @@ public class ApproveRequest extends HttpServlet {
 //        String tmp;
 //        tmp = dbrequest.getDatereq();
 //        System.out.println(tmp);
-
+         String ls = dbrequest.getDatereq();
+        System.out.println(ls);
         reservation.setDate(dbrequest.getDatereq());
         reservation.setReserverID(dbrequest.getReserverIDreq());
         reservation.setRoomID(dbrequest.getRoomIDreq());

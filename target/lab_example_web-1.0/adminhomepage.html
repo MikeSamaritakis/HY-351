@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styling.css">
+  <script src="functions.js"></script>
+  <title>AdminHomePage</title>
+</head>
+
+<body>
+  <h1>Admin HomePage</h1>
+<!--  <form id="adminapprovedenyrequest" method="post" action="ApproveRequest" style="display: block">-->
+<!--    <h2>Approve or Deny Requests</h2>-->
+<!--    <div class="buttons">-->
+
+<!--      <div class="container" style="background-color: transparent">-->
+
+<!--        <div class="pad">-->
+<!--          <label style="margin-right: 90%;"><b> Room ID :</b></label>-->
+<!--          <input type="number" name="roomID" placeholder= "ROOM ID" size="15" required/>-->
+<!--        </div>-->
+
+<!--        <div class="pad">-->
+<!--          <label style="margin-right: 90%;"><b> Reserver ID :</b></label>-->
+<!--          <input type="number" name="reserverID" placeholder= "RESERVER ID" size="15" required/>-->
+<!--        </div>-->
+
+<!--        <div class="buttons">-->
+<!--          <button type="submit" class="approvebuttonsubmit" formaction="ApproveRequest" value="Call Servlet">Approve Request</button>-->
+<!--          <button type="submit" class="denybuttonsubmit" formaction="DenyRequest" value="Call Servlet">Deny Request</button>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--  </form>-->
+
+  <form id="removeroom" method="post" action="RemoveRoom" style="display: block">
+    <h2>Remove a Room</h2>
+    <div class="buttons">
+
+      <div class="container" style="background-color: transparent">
+
+        <div class="pad">
+          <label style="margin-right: 90%;"><b> Room ID :</b></label>
+          <input type="number" name="roomID" placeholder= "ROOM ID" size="15" required/>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="removeroombutton" value="Call Servlet">Remove Room</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+  <form id="addroom" method="post" action="AddRoom" style="display: block">
+    <h2>Add New Room</h2>
+    <div class="buttons">
+
+      <div class="container" style="background-color: transparent">
+
+        <div class="pad">
+          <label style="margin-right: 90%;"><b> Room ID :</b></label>
+          <input type="number" name="roomID" placeholder= "ROOM ID" size="15" required/>
+        </div>
+
+        <div class="pad">
+          <label style="margin-right: 90%;"><b> Capacity :</b></label>
+          <input type="number" name="capacity" placeholder= "CAPACITY" size="15" required/>
+        </div>
+
+        <div class="pad">
+          <label style="margin-right: 90%;"><b> EquipmentType:</b></label>
+          <input type="number" name="equipmenttype" placeholder= "EQUIPMENT TYPE" size="15" required/>
+        </div>
+
+        <div class="pad">
+          <label style="margin-right: 90%;"><b> Admin ID :</b></label>
+          <input type="number" name="adminID" placeholder= "ADMIN ID" size="15" required/>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="addroombutton" value="Call Servlet">Add Room</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+  <form id="request" method="post" action="ApproveRequest" style="display: block">
+    <h2>Approve or Deny Requests</h2>
+    <label style="margin-right: 90%;"><b> Request ID :</b></label>
+    <input type="number" name="requestID" id="requestID" placeholder= "REQUEST ID" size="15" required/>
+
+    <button type="submit" class="approverequest" value="Call Servlet">Approve Request</button>
+    <button type="submit" class="denyrequest" formaction="DenyRequest" value="Call Servlet">Deny Request</button>
+  </form>
+
+  <div class="button">
+    <h2>View All Requests</h2>
+    <button type="submit" class="viewrequests" formaction="ViewRequests" value="Call Servlet">View All Requests</button>
+  </div>
+</body>
+</html>
