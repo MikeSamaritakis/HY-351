@@ -41,8 +41,16 @@
         <servlet-class>Servlets.ViewRequests</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewRooms</servlet-name>
-        <servlet-class>Servlets.ViewRooms</servlet-class>
+        <servlet-name>ViewRoomsAdmin</servlet-name>
+        <servlet-class>Servlets.ViewRoomsAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewRoomsApplicant</servlet-name>
+        <servlet-class>Servlets.ViewRoomsApplicant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewYourReservations</servlet-name>
+        <servlet-class>Servlets.ViewYourReservations</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -78,8 +86,16 @@
         <url-pattern>/ViewRequests/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewRooms</servlet-name>
-        <url-pattern>/ViewRooms/*</url-pattern>
+        <servlet-name>ViewRoomsAdmin</servlet-name>
+        <url-pattern>/ViewRoomsAdmin/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewRoomsApplicant</servlet-name>
+        <url-pattern>/ViewRoomsApplicant/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>ViewYourReservations</servlet-name>
+    <url-pattern>/ViewYourReservations/*</url-pattern>
     </servlet-mapping>
 
 

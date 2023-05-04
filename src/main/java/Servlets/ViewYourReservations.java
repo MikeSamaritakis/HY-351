@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet(name = "ViewYourReservations", value = "/ViewYourReservations")
+@WebServlet()
 public class ViewYourReservations extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
