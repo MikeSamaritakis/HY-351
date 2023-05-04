@@ -17,7 +17,7 @@ public class ViewAllReservations extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //admin view all reservations
+        //admin view ALL reservations
         PrintWriter out = response.getWriter();
 
         Connection con = null;
@@ -28,7 +28,7 @@ public class ViewAllReservations extends HttpServlet {
         }
 
         ResultSet rs;
-        String query = "SELECT * FROM reservations";
+        String query = "select * from reservations";
 
         response.setContentType("text/html");
         out.println("<html><body>");
@@ -39,7 +39,7 @@ public class ViewAllReservations extends HttpServlet {
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(query);
             out.println("<table border=1 width=50% height=50%>");
-            out.println("Your Reservations\n");
+            out.println("All Reservations\n");
             while(rs.next()){
                 String roomid = rs.getString("RoomID");
                 String resdate = rs.getString("resdate");
