@@ -24,7 +24,6 @@ public class AddAdmin extends HttpServlet {
         admin.setAge(Integer.parseInt(request.getParameter("newadminage")));
         admin.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
         admin.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
-        admin.setRoomID(Integer.parseInt(request.getParameter("newadminroomid")));
 
         EditAdminsTable eat = new EditAdminsTable();
         try {
