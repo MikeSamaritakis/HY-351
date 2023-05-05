@@ -73,7 +73,7 @@ public class EditApplicantsTable extends Applicant {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " applicants (ID,EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
                     + " VALUES ("
                     + "'" + applicant.getID() + "',"
                     + "'" + applicant.getEmployeeName() + "',"

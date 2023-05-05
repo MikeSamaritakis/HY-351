@@ -24,7 +24,7 @@ public class EditAdminsTable extends Admin {
                 + " Age INTEGER,"
                 + " Salary INTEGER,"
                 + " HierarchicalPosition INTEGER,"
-                + " RoomID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT"
+                + " RoomID INTEGER NOT NULL UNIQUE PRIMARY KEY"
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -44,16 +44,16 @@ public class EditAdminsTable extends Admin {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (1234, 'tsoukos', 22, 750, 1)";
+                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition, RoomID)"
+                    + " VALUES (1234, 'tsoukos', 22, 750, 1, 2)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
             System.out.println("# The admin was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
-                    + " VALUES (4321, 'sfalmas', 21, 650, 2)";
+                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition, RoomID)"
+                    + " VALUES (4321, 'sfalmas', 21, 650, 2, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
@@ -72,13 +72,14 @@ public class EditAdminsTable extends Admin {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition)"
+                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition, RoomID)"
                     + " VALUES ("
                     + "'" + admin.getID() + "',"
                     + "'" + admin.getEmployeeName() + "',"
                     + "'" + admin.getAge() + "',"
                     + "'" + admin.getSalary() + "',"
-                    + "'" + admin.getHierarchicalPosition() + "'"
+                    + "'" + admin.getHierarchicalPosition() + "',"
+                    + "'" + admin.getRoomID() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);

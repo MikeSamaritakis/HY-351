@@ -56,6 +56,14 @@
         <servlet-name>ViewAllReservations</servlet-name>
         <servlet-class>Servlets.ViewAllReservations</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddAdmin</servlet-name>
+        <servlet-class>Servlets.AddAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddApplicant</servlet-name>
+        <servlet-class>Servlets.AddApplicant</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>AddRoom</servlet-name>
@@ -104,6 +112,14 @@
     <servlet-mapping>
         <servlet-name>ViewAllReservations</servlet-name>
         <url-pattern>/ViewAllReservations/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddAdmin</servlet-name>
+        <url-pattern>/AddAdmin/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddApplicant</servlet-name>
+        <url-pattern>/AddApplicant/*</url-pattern>
     </servlet-mapping>
 
 
