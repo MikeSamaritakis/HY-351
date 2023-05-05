@@ -20,8 +20,8 @@ public class EditFavoritesTable extends Favorites {
         Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE favorites "
-                + "(RoomID INTEGER NOT NULL UNIQUE, "
-                + " ApplicantID INTEGER NOT NULL UNIQUE "
+                + "(RoomID INTEGER, "
+                + " ApplicantID INTEGER "
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -62,7 +62,7 @@ public class EditFavoritesTable extends Favorites {
         }
     }
 
-    public void addNewFavorite(Favorites favorite) throws ClassNotFoundException {
+    public static void addNewFavorite(Favorites favorite) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 
@@ -105,6 +105,25 @@ public class EditFavoritesTable extends Favorites {
             System.out.println("The given favorite does not exist.");
         }
         return null;
+    }
+
+    public static void deleteFavorite(String roomID, String applicantID) throws ClassNotFoundException{
+        try {
+            Connection con = DB_Connection.getConnection();
+
+            Statement stmt = con.createStatement();
+
+            String insertQuery = ("DELETE FROM favorites WHERE RoomID = '" + roomID + "'AND ApplicantID = '" + applicantID + "'");
+            //stmt.execute(table);
+            System.out.println(insertQuery);
+            stmt.executeUpdate(insertQuery);
+            System.out.println("# The favorite was successfully deleted from the database.");
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditFavoritesTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

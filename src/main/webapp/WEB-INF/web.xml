@@ -64,6 +64,19 @@
         <servlet-name>AddApplicant</servlet-name>
         <servlet-class>Servlets.AddApplicant</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewYourFavorites</servlet-name>
+        <servlet-class>Servlets.ViewYourFavorites</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddFavorite</servlet-name>
+        <servlet-class>Servlets.AddFavorite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveFavorite</servlet-name>
+        <servlet-class>Servlets.RemoveFavorite</servlet-class>
+    </servlet>
+
 
     <servlet-mapping>
         <servlet-name>AddRoom</servlet-name>
@@ -121,6 +134,19 @@
         <servlet-name>AddApplicant</servlet-name>
         <url-pattern>/AddApplicant/*</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewYourFavorites</servlet-name>
+        <url-pattern>/ViewYourFavorites/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFavorite</servlet-name>
+        <url-pattern>/AddFavorite/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveFavorite</servlet-name>
+        <url-pattern>/RemoveFavorite/*</url-pattern>
+    </servlet-mapping>
+
 
 
     <!--Defines the welcome page.-->

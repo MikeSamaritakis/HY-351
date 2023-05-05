@@ -30,6 +30,16 @@
         <button type="submit" class="makerequest" value="Call Servlet">Request Reservation</button>
     </form>
 
+    <form id="addremovefavorites" method="post" action="AddFavorite" style="display: block">
+        <br>
+        <h2>Add or Remove Favorite</h2>
+        <label style="margin-right: 90%;"><b> Room ID :</b></label>
+        <input type="number" name="roomID" placeholder= "ROOM ID" size="15" required/>
+        <br><br>
+        <button type="submit" class="addremovefavorite" value="Call Servlet">Add to Favotites</button>
+        <button type="submit" class="addremovefavorite" formaction="RemoveFavorite" value="Call Servlet">Remove from Favotites</button>
+    </form>
+
     <form id="viewrooms" method="post" action="ViewRoomsApplicant" style="display: block">
         <h2>View All Rooms</h2>
         <button type="submit" class="viewrooms" formaction="ViewRoomsApplicant" value="Call Servlet">View All Rooms</button>
@@ -38,6 +48,11 @@
     <form id="viewreservations" method="post" action="ViewYourReservations" style="display: block">
         <h2>View Your Reservations</h2>
         <button type="submit" class="viewreservations" value="Call Servlet">View your Reservations</button>
+    </form>
+
+    <form id="viewfavorites" method="post" action="ViewYourFavorites" style="display: block">
+        <h2>View Favorites</h2>
+        <button type="submit" class="viewreservations" value="Call Servlet">View Favorites</button>
     </form>
 
     <form action="http://localhost:8080/lab_example_web_war_exploded/loginpage.html">
