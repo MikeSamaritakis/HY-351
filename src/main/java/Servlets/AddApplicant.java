@@ -17,12 +17,18 @@ public class AddApplicant extends HttpServlet {
 
         Applicant applicant = new Applicant();
 
-        applicant.setID(Integer.parseInt(request.getParameter("newapplicantID")));
-        applicant.setEmployeeName(request.getParameter("newapplicantname"));
-        applicant.setAge(Integer.parseInt(request.getParameter("newapplicantage")));
-        applicant.setHierarchicalPosition(Integer.parseInt(request.getParameter("newapplicanthierarchicalposition")));
+//        applicant.setID(Integer.parseInt(request.getParameter("newapplicantID")));
+//        applicant.setEmployeeName(request.getParameter("newapplicantname"));
+//        applicant.setAge(Integer.parseInt(request.getParameter("newapplicantage")));
+//        applicant.setSalary(Integer.parseInt(request.getParameter("newapplicantsalary")));
+//        applicant.setHierarchicalPosition(Integer.parseInt(request.getParameter("newapplicanthierarchicalposition")));
         applicant.setPriority(Integer.parseInt(request.getParameter("newapplicantpriority")));
-        applicant.setSalary(Integer.parseInt(request.getParameter("newapplicantsalary")));
+
+        applicant.setID(Integer.parseInt(request.getParameter("newadminid")));
+        applicant.setEmployeeName(request.getParameter("newadminname"));
+        applicant.setAge(Integer.parseInt(request.getParameter("newadminage")));
+        applicant.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
+        applicant.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
 
         EditApplicantsTable eat = new EditApplicantsTable();
         try {

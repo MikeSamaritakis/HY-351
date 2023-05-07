@@ -20,7 +20,7 @@ public class EditApplicantsTable extends Applicant {
         Statement stmt = con.createStatement();
 
         String query = "CREATE TABLE applicants "
-                + "(ID INTEGER NOT NULL UNIQUE, "
+                + "(ID INTEGER NOT NULL UNIQUE PRIMARY KEY , "
                 + " EmployeeName char(255),"
                 + " Age INTEGER,"
                 + " Salary INTEGER,"
