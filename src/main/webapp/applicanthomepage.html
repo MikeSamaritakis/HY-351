@@ -40,8 +40,12 @@
     <form id="datemodrequest" method="post" action="ModificationRequest" style="display: block">
         <h2>Request Reservation Modification</h2>
 
+        <label style="margin-right: 90%;"><b> Reservation ID :<br></b></label>
+        <input type="number" name="modreqreservationid" placeholder= "RESERVATION ID" size="15" required/>
+        <br><br>
+
         <label style="margin-right: 90%;"><b> Reservation Date :<br></b></label>
-        <input type="date" name="deletereqreservationid" placeholder= "RESERVATION DATE" size="15" required/>
+        <input type="date" name="datemodrequest" placeholder= "RESERVATION DATE" size="15" required/>
 
         <br><br>
         <button type="submit" class="datemodrequest" value="Call Servlet">Request Reservation Modification</button>

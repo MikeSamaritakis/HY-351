@@ -35,6 +35,7 @@ public class ApproveRequest extends HttpServlet {
         String query = "SELECT * FROM requests WHERE ReqID = '" + requestID + "'";
 
         try {
+
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(query);
 
@@ -67,10 +68,15 @@ public class ApproveRequest extends HttpServlet {
                 EditReservationsTable.addNewReservation(reservation);
             }else if (reqtype == "2"){
                 // delete reservation request
-
+                String rescancelid = request.getParameter("deletereqreservationid");
+                EditReservationsTable.deleteReservation(rescancelid);
+                EditRequestsTable.deleteRequest(requestID);
             }else if (reqtype == "3"){
                 //date modification request
-
+                String moddate = request.getParameter("datemodrequest");
+                String resid = request.getParameter("modreqreservationid");
+                EditReservationsTable.updateReservationDate(moddate, resid);
+                EditRequestsTable.deleteRequest(requestID);
             }
 
         } catch (ClassNotFoundException | SQLException e) {

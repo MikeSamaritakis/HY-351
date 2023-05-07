@@ -110,4 +110,30 @@ public class EditReservationsTable extends Reservation {
         return null;
     }
 
+    public static void deleteReservation(String resID) throws ClassNotFoundException{
+        try {
+            Connection con = DB_Connection.getConnection();
+
+            Statement stmt = con.createStatement();
+
+            String insertQuery = "DELETE FROM reservations WHERE ReservationID = '" + resID + "'";
+            //stmt.execute(table);
+            System.out.println(insertQuery);
+            stmt.executeUpdate(insertQuery);
+            System.out.println("# The reservation was successfully deleted from the database.");
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditReservationsTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void updateReservationDate(String moddate, String resID) throws SQLException, ClassNotFoundException {
+        Connection con = DB_Connection.getConnection();
+        Statement stmt = con.createStatement();
+        String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE ReservationID = '" + resID + "'";
+        stmt.executeUpdate(update);
+    }
+
 }
