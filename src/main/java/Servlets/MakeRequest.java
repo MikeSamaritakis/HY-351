@@ -15,7 +15,10 @@ public class MakeRequest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //applicant makes a request
 
-        String applicantID = request.getParameter("applicantID");
+        //String applicantID = request.getParameter("applicantID");
+        HttpSession session = request.getSession(false);
+        String applicantID = (String) session.getAttribute("applicantID");
+
         String date = request.getParameter("date");
         String roomID = request.getParameter("roomID");
 
