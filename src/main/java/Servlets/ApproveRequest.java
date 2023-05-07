@@ -19,40 +19,10 @@ import java.sql.Statement;
 @WebServlet()
 public class ApproveRequest extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //System.out.println("APPROVE REQUEST");
 
         String requestID = request.getParameter("requestID");
-
-//        try {
-//            dbrequest = EditRequestsTable.databaseToRequest(requestID);
-//            System.out.println(requestID);
-//        } catch (SQLException | ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-////        String tmp;
-////        tmp = dbrequest.getDatereq();
-////        System.out.println(tmp);
-//         int ls = dbrequest.getRoomIDreq();
-//        System.out.println(ls);
-//        reservation.setDate(dbrequest.getDatereq());
-//        reservation.setReserverID(dbrequest.getReserverIDreq());
-//        reservation.setRoomID(dbrequest.getRoomIDreq());
-//
-//        try {
-//            res.addNewReservation(reservation);
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-
-//        try {
-//            req.deleteRequest(requestID);
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
 
         Connection con = null;
         try {
@@ -71,26 +41,37 @@ public class ApproveRequest extends HttpServlet {
             String reserverid = null;
             String roomid = null;
             String reqdate = null;
+            String reqtype = null;
             while (rs.next()) {
                 roomid = rs.getString("RoomIDReq");
                 reqdate = rs.getString("DateReq");
                 reserverid = rs.getString("ReserverIDReq");
+                reqtype = rs.getString("ReqType");
             }
 
-            Request dbrequest = new Request();
-            Reservation reservation = new Reservation();
+            if (reqtype == "1") {
+                //make reservation request
+                Request dbrequest = new Request();
+                Reservation reservation = new Reservation();
 
-            dbrequest.setReserverIDreq(Integer.parseInt(reserverid));
-            dbrequest.setRoomIDreq(Integer.parseInt(roomid));
-            dbrequest.setDatereq(reqdate);
+                dbrequest.setReserverIDreq(Integer.parseInt(reserverid));
+                dbrequest.setRoomIDreq(Integer.parseInt(roomid));
+                dbrequest.setDatereq(reqdate);
 
-            EditRequestsTable.deleteRequest(requestID);
+                EditRequestsTable.deleteRequest(requestID);
 
-            reservation.setDate(reqdate);
-            reservation.setReserverID(Integer.parseInt(reserverid));
-            reservation.setRoomID(Integer.parseInt(roomid));
+                reservation.setDate(reqdate);
+                reservation.setReserverID(Integer.parseInt(reserverid));
+                reservation.setRoomID(Integer.parseInt(roomid));
 
-            EditReservationsTable.addNewReservation(reservation);
+                EditReservationsTable.addNewReservation(reservation);
+            }else if (reqtype == "2"){
+                // delete reservation request
+
+            }else if (reqtype == "3"){
+                //date modification request
+
+            }
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
