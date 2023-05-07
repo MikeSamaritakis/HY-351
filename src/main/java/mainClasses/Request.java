@@ -6,6 +6,19 @@ public class Request {
     String datereq;
     int ReserverIDreq;
     int RoomIDreq;
+    int ReqType;
+    /*1= make reservation request
+    * 2= delete reservation request
+    * 3= date modification request
+    */
+
+    public int getReqType() {
+        return ReqType;
+    }
+
+    public void setReqType(int reqType) {
+        ReqType = reqType;
+    }
 
     public String getDatereq() {
         return datereq;

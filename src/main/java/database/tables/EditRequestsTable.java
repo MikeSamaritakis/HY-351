@@ -19,7 +19,8 @@ public class EditRequestsTable extends Request {
                 + "(ReqID INTEGER  UNIQUE PRIMARY KEY AUTO_INCREMENT,"
                 + " DateReq char(255)  , "
                 + " ReserverIDReq INTEGER , "
-                + " RoomIDReq INTEGER "
+                + " RoomIDReq INTEGER, "
+                + " ReqType INTEGER NOT NULL"
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -39,16 +40,16 @@ public class EditRequestsTable extends Request {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " requests (DateReq, ReserverIDReq, RoomIDReq)"
-                    + " VALUES ('2023-05-30', 13, 77)";
+                    + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
+                    + " VALUES ('2023-05-30', 13, 77, ReqType)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
             System.out.println("# The request was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " requests (DateReq, ReserverIDReq, RoomIDReq)"
-                    + " VALUES ('2020-12-24', 43, 3)";
+                    + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
+                    + " VALUES ('2020-12-24', 43, 3, )";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
@@ -67,11 +68,12 @@ public class EditRequestsTable extends Request {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " requests (DateReq, ReserverIDReq, RoomIDReq)"
+                    + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
                     + " VALUES  ("
                     + "'" + request.getDatereq() + "',"
                     + "'" + request.getReserverIDreq() + "',"
-                    + "'" + request.getRoomIDreq() + "' "
+                    + "'" + request.getRoomIDreq() + "',"
+                    + "'" + request.getReqType() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);

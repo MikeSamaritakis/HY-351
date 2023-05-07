@@ -9,11 +9,11 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet()
-public class MakeRequest extends HttpServlet {
+public class ModificationRequest extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //applicant makes a request
+        //applicant makes a cancellation request
 
         //String applicantID = request.getParameter("applicantID");
         HttpSession session = request.getSession(false);
@@ -28,7 +28,7 @@ public class MakeRequest extends HttpServlet {
         newrequest.setDatereq(date);
         newrequest.setRoomIDreq(Integer.parseInt(roomID));
         newrequest.setReserverIDreq(Integer.parseInt(applicantID));
-        newrequest.setReqType(1);
+        newrequest.setReqType(3);
 
         try {
             ert.addNewRequest(newrequest);

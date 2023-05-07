@@ -76,6 +76,14 @@
         <servlet-name>RemoveFavorite</servlet-name>
         <servlet-class>Servlets.RemoveFavorite</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CancellationRequest</servlet-name>
+        <servlet-class>Servlets.CancellationRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificationRequest</servlet-name>
+        <servlet-class>Servlets.ModificationRequest</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -146,7 +154,14 @@
         <servlet-name>RemoveFavorite</servlet-name>
         <url-pattern>/RemoveFavorite/*</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>CancellationRequest</servlet-name>
+        <url-pattern>/CancellationRequest/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificationRequest</servlet-name>
+        <url-pattern>/ModificationRequest/*</url-pattern>
+    </servlet-mapping>
 
 
     <!--Defines the welcome page.-->
