@@ -41,6 +41,9 @@ public class ViewYourFavorites extends HttpServlet {
         out.println("<form action=\"http://localhost:8080/lab_example_web_war_exploded/applicanthomepage.html\">\n" +
                 "    <input type=\"submit\" value=\"Go back to HomePage\" />\n" +
                 "</form>");
+        out.println("  <form action=\"http://localhost:8080/lab_example_web_war_exploded/loginpage.html\">\n" +
+                "    <input type=submit value=\"Logout\" />\n" +
+                "  </form>");
         try {
             Statement stmt = con.createStatement();
             rs = stmt.executeQuery(query);

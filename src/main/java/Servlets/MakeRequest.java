@@ -32,6 +32,6 @@ public class MakeRequest extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        response.sendRedirect("/lab_example_web_war_exploded/maderequest.html");
+        response.sendRedirect("/lab_example_web_war_exploded/applicanthomepage.html");
     }
 }

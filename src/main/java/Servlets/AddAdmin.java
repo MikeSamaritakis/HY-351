@@ -19,7 +19,7 @@ public class AddAdmin extends HttpServlet {
 
         Admin admin = new Admin();
 
-        admin.setID(Integer.parseInt(request.getParameter("newadminID")));
+        admin.setID(Integer.parseInt(request.getParameter("newadminid")));
         admin.setEmployeeName(request.getParameter("newadminname"));
         admin.setAge(Integer.parseInt(request.getParameter("newadminage")));
         admin.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
