@@ -21,7 +21,7 @@ public class EditFavoritesTable extends Favorites {
 
         String query = "CREATE TABLE favorites "
                 + "(RoomID INTEGER, "
-                + " ApplicantID INTEGER "
+                + " ApplicantID INTEGER PRIMARY KEY NOT NULL "
                 + ")";
         stmt.execute(query);
         stmt.close();
