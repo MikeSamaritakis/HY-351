@@ -48,7 +48,8 @@ public class ViewRequests extends HttpServlet {
                 String resid = rs.getString("ReserverIDReq");
                 String datereq = rs.getString("DateReq");
                 String roomid = rs.getString("RoomIDReq");
-                out.println("<tr><td>ID:" + reqid + "</td><td>DATE:" + datereq + "</td><td>ROOM:" + roomid + "</td><td>APPLICANT:" + resid + "</td></tr>");
+                String reqtype = rs.getString("ReqType");
+                out.println("<tr><td>ID:" + reqid + "</td><td>TYPE:" + reqtype + "</td><td>DATE:" + datereq + "</td><td>ROOM:" + roomid + "</td><td>APPLICANT:" + resid + "</td></tr>");
             }
             out.println("</table>");
         } catch (SQLException e) {

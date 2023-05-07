@@ -41,7 +41,7 @@ public class EditRequestsTable extends Request {
 
             String insertQuery = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
-                    + " VALUES ('2023-05-30', 13, 77, ReqType)";
+                    + " VALUES ('2023-05-30', 13, 77, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
@@ -49,7 +49,7 @@ public class EditRequestsTable extends Request {
 
             String insertQuery2 = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
-                    + " VALUES ('2020-12-24', 43, 3, )";
+                    + " VALUES ('2020-12-24', 43, 3, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
