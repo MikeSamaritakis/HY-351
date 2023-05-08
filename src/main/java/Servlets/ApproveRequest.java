@@ -23,6 +23,7 @@ public class ApproveRequest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String requestID = request.getParameter("requestID");
+        //System.out.println("requestID" +  requestID);
 
         try {
             Request request1 = EditRequestsTable.databaseToRequest(requestID);
@@ -56,7 +57,7 @@ public class ApproveRequest extends HttpServlet {
 
                 Request request2 = EditRequestsTable.databaseToRequest(requestID);
 
-                Reservation reservation = EditReservationsTable.databaseToReservation(request2.getReserverIDreq(), request2.getRoomIDreq());
+//                Reservation reservation = EditReservationsTable.databaseToReservation(request2.getReserverIDreq(), request2.getRoomIDreq());
 
                 EditReservationsTable.updateReservationDate(request2.getDatereq(), request2.getRoomIDreq());
 

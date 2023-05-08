@@ -44,7 +44,7 @@ public class EditReservationsTable extends Reservation {
 
             String insertQuery = "INSERT INTO "
                     + " reservations (resdate, ReserverID, RoomID)"
-                    + " VALUES ('2007-12-31', 1234, 2)";
+                    + " VALUES ('2007-12-31', 23, 2)";
             //stmt.execute(table);
             System.out.println(insertQuery);
             stmt.executeUpdate(insertQuery);
@@ -52,10 +52,18 @@ public class EditReservationsTable extends Reservation {
 
             String insertQuery2 = "INSERT INTO "
                     + " reservations (resdate, ReserverID, RoomID)"
-                    + " VALUES ('2032-12-3', 4321, 1)";
+                    + " VALUES ('2032-12-3', 321, 3)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
+            System.out.println("# The reservation2 was successfully added in the database.");
+
+            String insertQuery3 = "INSERT INTO "
+                    + " reservations (resdate, ReserverID, RoomID)"
+                    + " VALUES ('2032-12-3', 23, 3)";
+            //stmt.execute(table);
+            System.out.println(insertQuery3);
+            stmt.executeUpdate(insertQuery3);
             System.out.println("# The reservation2 was successfully added in the database.");
 
             stmt.close();
@@ -134,6 +142,9 @@ public class EditReservationsTable extends Reservation {
         Statement stmt = con.createStatement();
         String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE RoomID = '" + roomid + "'";
         stmt.executeUpdate(update);
+        System.out.println(moddate);
+        System.out.println(roomid);
+        System.out.println("# The reservation was successfully updated.");
     }
 
 }
