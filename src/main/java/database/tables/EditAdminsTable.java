@@ -64,7 +64,7 @@ public class EditAdminsTable extends Admin {
         }
     }
 
-    public void addNewAdmin(Admin admin) throws ClassNotFoundException {
+    public static void addNewAdmin(Admin admin) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 

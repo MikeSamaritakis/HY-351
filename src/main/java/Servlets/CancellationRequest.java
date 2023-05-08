@@ -1,5 +1,6 @@
 package Servlets;
 
+import database.tables.EditApplicantsTable;
 import database.tables.EditRequestsTable;
 import mainClasses.Request;
 
@@ -7,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class CancellationRequest extends HttpServlet {
@@ -22,7 +24,14 @@ public class CancellationRequest extends HttpServlet {
         String date = request.getParameter("date");
         String roomID = request.getParameter("roomID");
 
-        EditRequestsTable ert = new EditRequestsTable();
+        try {
+            if (EditApplicantsTable.databaseToApplicant(applicantID) == null){
+                System.out.println("ERROR: THE APPLICANT ID YOU PROVIDED DOES NOT EXIST!");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         Request newrequest = new Request();
 
         newrequest.setDatereq(date);
@@ -31,7 +40,7 @@ public class CancellationRequest extends HttpServlet {
         newrequest.setReqType(2);
 
         try {
-            ert.addNewRequest(newrequest);
+            EditRequestsTable.addNewRequest(newrequest);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

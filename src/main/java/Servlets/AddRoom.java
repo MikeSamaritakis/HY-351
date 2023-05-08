@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class AddRoom extends HttpServlet {
@@ -25,10 +26,13 @@ public class AddRoom extends HttpServlet {
         room.setEquipementType(Integer.parseInt(equipmenttype));
         room.setAdminID(Integer.parseInt(adminID));
 
-        EditRoomsTable ert = new EditRoomsTable();
         try {
-            ert.addNewRoom(room);
-        } catch (ClassNotFoundException e) {
+            if (EditRoomsTable.databaseToRoom(String.valueOf(room.getRoomID())) != null) {
+                EditRoomsTable.addNewRoom(room);
+            }else{
+                System.out.println("ERROR: THE ROOM INFO YOU PROVIDED ALREADY EXISTS!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 

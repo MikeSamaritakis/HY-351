@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class DenyRequest extends HttpServlet {
@@ -15,11 +16,13 @@ public class DenyRequest extends HttpServlet {
         //System.out.println("DENY REQUEST");
         String requestID = request.getParameter("requestID");
 
-        EditRequestsTable ert = new EditRequestsTable();
-
         try {
-            ert.deleteRequest(requestID);
-        } catch (ClassNotFoundException e) {
+            if (EditRequestsTable.databaseToRequest(requestID) != null) {
+                EditRequestsTable.deleteRequest(requestID);
+            }else{
+                System.out.println("ERROR: THE REQUEST ID YOU PROVIDED DOES NOT EXISTS!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 

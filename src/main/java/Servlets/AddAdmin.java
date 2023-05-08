@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class AddAdmin extends HttpServlet {
@@ -25,10 +26,13 @@ public class AddAdmin extends HttpServlet {
         admin.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
         admin.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
 
-        EditAdminsTable eat = new EditAdminsTable();
         try {
-            eat.addNewAdmin(admin);
-        } catch (ClassNotFoundException e) {
+            if (EditAdminsTable.databaseToAdmin(String.valueOf(admin.getID())) != null) {
+                EditAdminsTable.addNewAdmin(admin);
+            }else{
+                System.out.println("ERROR: THE ADMIN CREDENTIALS YOU PROVIDED ALREADY EXISTS!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 

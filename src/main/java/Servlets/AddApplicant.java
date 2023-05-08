@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class AddApplicant extends HttpServlet {
@@ -30,10 +31,13 @@ public class AddApplicant extends HttpServlet {
         applicant.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
         applicant.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
 
-        EditApplicantsTable eat = new EditApplicantsTable();
         try {
-            eat.addNewApplicant(applicant);
-        } catch (ClassNotFoundException e) {
+            if (EditApplicantsTable.databaseToApplicant(String.valueOf(applicant.getID())) != null) {
+                EditApplicantsTable.addNewApplicant(applicant);
+            }else{
+                System.out.println("ERROR: THE APPLICANT CREDENTIALS YOU PROVIDED ALREADY EXISTS!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 

@@ -64,7 +64,7 @@ public class EditRoomsTable extends Room {
         }
     }
 
-    public void addNewRoom(Room room) throws ClassNotFoundException {
+    public static void addNewRoom(Room room) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 

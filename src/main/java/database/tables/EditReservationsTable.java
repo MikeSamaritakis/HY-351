@@ -118,6 +118,26 @@ public class EditReservationsTable extends Reservation {
         return null;
     }
 
+    public static Reservation databaseToReservationbyResID(String resID) throws SQLException, ClassNotFoundException{
+        Connection con = DB_Connection.getConnection();
+        Statement stmt = con.createStatement();
+
+        ResultSet rs;
+        try {
+            rs = stmt.executeQuery("SELECT * FROM reservations WHERE ReservationID = '" + resID + "'");
+            rs.next();
+            String json=DB_Connection.getResultsToJSON(rs);
+            Gson gson = new Gson();
+            Reservation reservation = gson.fromJson(json, Reservation.class);
+            return reservation;
+        } catch (Exception e) {
+            System.out.println("Got an exception! ");
+            System.err.println(e.getMessage());
+            System.out.println("The given reservation does not exist.");
+        }
+        return null;
+    }
+
     public static void deleteReservation(String resID) throws ClassNotFoundException{
         try {
             Connection con = DB_Connection.getConnection();

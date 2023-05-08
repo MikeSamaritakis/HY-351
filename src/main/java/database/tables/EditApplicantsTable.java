@@ -66,7 +66,7 @@ public class EditApplicantsTable extends Applicant {
         }
     }
 
-    public void addNewApplicant(Applicant applicant) throws ClassNotFoundException {
+    public static void addNewApplicant(Applicant applicant) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 

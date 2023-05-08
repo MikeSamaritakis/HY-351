@@ -1,12 +1,14 @@
 package Servlets;
 
 import database.tables.EditRequestsTable;
+import database.tables.EditRoomsTable;
 import mainClasses.Request;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet()
 public class MakeRequest extends HttpServlet {
@@ -22,7 +24,6 @@ public class MakeRequest extends HttpServlet {
         String date = request.getParameter("date");
         String roomID = request.getParameter("roomID");
 
-        EditRequestsTable ert = new EditRequestsTable();
         Request newrequest = new Request();
 
         newrequest.setDatereq(date);
@@ -31,8 +32,12 @@ public class MakeRequest extends HttpServlet {
         newrequest.setReqType(1);
 
         try {
-            ert.addNewRequest(newrequest);
-        } catch (ClassNotFoundException e) {
+            if (EditRoomsTable.databaseToRoom(roomID) != null) {
+                EditRequestsTable.addNewRequest(newrequest);
+            }else {
+                System.out.println("ERROR: THE ROOM YOU REQUESTED DOES NOT EXIST!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 
