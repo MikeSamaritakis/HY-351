@@ -96,7 +96,7 @@ public class EditRequestsTable extends Request {
 
         ResultSet rs;
         try {
-            rs = stmt.executeQuery("SELECT * FROM requests WHERE RoomIDReq = '" + reqID + "'");
+            rs = stmt.executeQuery("SELECT * FROM requests WHERE ReqID = '" + reqID + "'");
             rs.next();
             String json=DB_Connection.getResultsToJSON(rs);
             Gson gson = new Gson();

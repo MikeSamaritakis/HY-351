@@ -51,6 +51,7 @@ public class ApproveRequest extends HttpServlet {
             }
 
             if (reqtype == "1") {
+                System.out.println("reqtype=1");
                 //make reservation request
                 Request dbrequest = new Request();
                 Reservation reservation = new Reservation();
@@ -67,11 +68,13 @@ public class ApproveRequest extends HttpServlet {
 
                 EditReservationsTable.addNewReservation(reservation);
             }else if (reqtype == "2"){
+                System.out.println("reqtype=2");
                 // delete reservation request
                 String rescancelid = request.getParameter("deletereqreservationid");
                 EditReservationsTable.deleteReservation(rescancelid);
                 EditRequestsTable.deleteRequest(requestID);
             }else if (reqtype == "3"){
+                System.out.println("reqtype=3");
                 //date modification request
                 String moddate = request.getParameter("datemodrequest");
                 String resid = request.getParameter("modreqreservationid");
