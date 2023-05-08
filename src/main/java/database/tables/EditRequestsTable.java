@@ -49,11 +49,19 @@ public class EditRequestsTable extends Request {
 
             String insertQuery2 = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
-                    + " VALUES ('2020-12-24', 43, 3, 3)";
+                    + " VALUES ('2012-11-10', 23, 20, 2)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
             System.out.println("# The request2 was successfully added in the database.");
+
+            String insertQuery3 = "INSERT INTO "
+                    + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
+                    + " VALUES ('2020-12-24', 43, 3, 3)";
+            //stmt.execute(table);
+            System.out.println(insertQuery3);
+            stmt.executeUpdate(insertQuery3);
+            System.out.println("# The request3 was successfully added in the database.");
 
             stmt.close();
         } catch (SQLException ex) {

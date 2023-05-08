@@ -105,7 +105,7 @@ public class EditReservationsTable extends Reservation {
         } catch (Exception e) {
             System.out.println("Got an exception! ");
             System.err.println(e.getMessage());
-            System.out.println("The given reservationID does not exist.");
+            System.out.println("The given reservation does not exist.");
         }
         return null;
     }
@@ -129,10 +129,10 @@ public class EditReservationsTable extends Reservation {
         }
     }
 
-    public static void updateReservationDate(String moddate, String resID) throws SQLException, ClassNotFoundException {
+    public static void updateReservationDate(String moddate, int roomid) throws SQLException, ClassNotFoundException {
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
-        String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE ReservationID = '" + resID + "'";
+        String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE RoomID = '" + roomid + "'";
         stmt.executeUpdate(update);
     }
 
