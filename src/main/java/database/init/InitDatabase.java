@@ -20,7 +20,7 @@ import java.sql.Statement;
 public class InitDatabase {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        dropDatabase();
+        //dropDatabase();
         InitDatabase init = new InitDatabase();
         init.initDatabase();
 
