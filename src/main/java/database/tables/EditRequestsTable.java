@@ -20,7 +20,7 @@ public class EditRequestsTable extends Request {
                 + " DateReq char(255)  , "
                 + " ReserverIDReq INTEGER , "
                 + " RoomIDReq INTEGER, "
-                + " ReqType INTEGER NOT NULL"
+                + " ReqType INTEGER"
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -49,7 +49,7 @@ public class EditRequestsTable extends Request {
 
             String insertQuery2 = "INSERT INTO "
                     + " requests (DateReq, ReserverIDReq, RoomIDReq, ReqType)"
-                    + " VALUES ('2020-12-24', 43, 3, 1)";
+                    + " VALUES ('2020-12-24', 43, 3, 3)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
             stmt.executeUpdate(insertQuery2);
@@ -61,7 +61,7 @@ public class EditRequestsTable extends Request {
         }
     }
 
-    public void addNewRequest(Request request) throws ClassNotFoundException {
+    public static void addNewRequest(Request request) throws ClassNotFoundException {
         try {
             Connection con = DB_Connection.getConnection();
 

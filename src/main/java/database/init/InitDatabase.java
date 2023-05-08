@@ -20,6 +20,7 @@ import java.sql.Statement;
 public class InitDatabase {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        dropDatabase();
         InitDatabase init = new InitDatabase();
         init.initDatabase();
 
@@ -35,7 +36,7 @@ public class InitDatabase {
         initTables();
     }
 
-    public void dropDatabase() throws SQLException, ClassNotFoundException {
+    public static void dropDatabase() throws SQLException, ClassNotFoundException {
         Connection conn = getInitialConnection();
         Statement stmt = conn.createStatement();
         stmt.execute("DROP DATABASE HY351");

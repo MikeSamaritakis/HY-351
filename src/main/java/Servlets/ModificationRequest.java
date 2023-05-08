@@ -17,21 +17,20 @@ public class ModificationRequest extends HttpServlet {
 
         //String applicantID = request.getParameter("applicantID");
         HttpSession session = request.getSession(false);
-        String applicantID = (String) session.getAttribute("applicantID");
+        int applicantID = (int) session.getAttribute("applicantID");
 
         String date = request.getParameter("date");
-        String roomID = request.getParameter("roomID");
+        int roomID = Integer.parseInt(request.getParameter("roomID"));
 
-        EditRequestsTable ert = new EditRequestsTable();
         Request newrequest = new Request();
 
         newrequest.setDatereq(date);
-        newrequest.setRoomIDreq(Integer.parseInt(roomID));
-        newrequest.setReserverIDreq(Integer.parseInt(applicantID));
+        newrequest.setRoomIDreq(roomID);
+        newrequest.setReserverIDreq(applicantID);
         newrequest.setReqType(3);
 
         try {
-            ert.addNewRequest(newrequest);
+            EditRequestsTable.addNewRequest(newrequest);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
