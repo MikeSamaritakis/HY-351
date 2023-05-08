@@ -137,13 +137,30 @@ public class EditReservationsTable extends Reservation {
         }
     }
 
-    public static void updateReservationDate(String moddate, int roomid) throws SQLException, ClassNotFoundException {
+    public static void deleteReservationbyReserverIDandRoomID(int reserverID, int roomID) throws ClassNotFoundException{
+        try {
+            Connection con = DB_Connection.getConnection();
+
+            Statement stmt = con.createStatement();
+
+            String insertQuery = "DELETE FROM reservations WHERE RoomID = '" + roomID + "'AND ReserverID = '" + reserverID + "'";
+            //stmt.execute(table);
+            System.out.println(insertQuery);
+            stmt.executeUpdate(insertQuery);
+            System.out.println("# The reservation was successfully deleted from the database.");
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditReservationsTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void updateReservationDate(String moddate, int roomid, int reserverID) throws SQLException, ClassNotFoundException {
         Connection con = DB_Connection.getConnection();
         Statement stmt = con.createStatement();
-        String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE RoomID = '" + roomid + "'";
+        String update = "UPDATE reservations SET resdate='" +  moddate + "' WHERE RoomID = '" + roomid + "'AND ReserverID = '" + reserverID +"'";
         stmt.executeUpdate(update);
-        System.out.println(moddate);
-        System.out.println(roomid);
         System.out.println("# The reservation was successfully updated.");
     }
 

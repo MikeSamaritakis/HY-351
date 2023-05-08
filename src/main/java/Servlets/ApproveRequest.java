@@ -19,47 +19,65 @@ import java.sql.Statement;
 @WebServlet()
 public class ApproveRequest extends HttpServlet {
     private static final long serialVersionUID = 1L; //https://www.codejava.net/coding/java-servlet-and-jsp-hello-world-tutorial-with-eclipse-maven-and-apache-tomcat
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //System.out.println("APPROVE REQUEST");
 
         String requestID = request.getParameter("requestID");
-        //System.out.println("requestID" +  requestID);
+
+        Connection con = null;
+        try {
+            con = DB_Connection.getConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        ResultSet rs;
+        String query = "SELECT * FROM requests WHERE ReqID = '" + requestID + "'";
 
         try {
-            Request request1 = EditRequestsTable.databaseToRequest(requestID);
+            Statement stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
 
-            if (request1.getReqType() == 1){
+            int reserverid = 0;
+            int roomid = 0;
+            String reqdate = null;
+            int reqtype = 0;
+            while (rs.next()) {
+                roomid = rs.getInt("RoomIDReq");
+                reqdate = rs.getString("DateReq");
+                reserverid = rs.getInt("ReserverIDReq");
+                reqtype = rs.getInt("ReqType");
+            }
+//            System.out.println("reserverid  " + reserverid);
+//            System.out.println("reqdate  " + reqdate);
+//            System.out.println("roomid  " + roomid);
+
+            if (reqtype == 1){
                 //make reservation request
 
-                Reservation reservation = null;
+                Reservation reservation = new Reservation();
 
-                reservation.setDate(request1.getDatereq());
-                System.out.println(request1.getDatereq());
-                reservation.setReserverID(request1.getReserverIDreq());
-                System.out.println(request1.getReserverIDreq());
-                reservation.setRoomID(request1.getRoomIDreq());
-                System.out.println(request1.getRoomIDreq());
+                reservation.setReserverID(reserverid);
+                reservation.setDate(reqdate);
+                reservation.setRoomID(roomid);
 
                 EditReservationsTable.addNewReservation(reservation);
-                EditRequestsTable.deleteRequest(requestID);
-
-            }else if (request1.getReqType() == 2){
-                // delete reservation request
-
-                System.out.println("approve");
-
-                //EditReservationsTable.deleteReservation();
 
                 EditRequestsTable.deleteRequest(requestID);
+            }else if (reqtype == 2){
+                //cancellation request
 
-            }else if (request1.getReqType() == 3){
-                //date modification request
+                Reservation reservation = new Reservation();
 
-                Request request2 = EditRequestsTable.databaseToRequest(requestID);
+                EditReservationsTable.deleteReservationbyReserverIDandRoomID(reserverid, roomid);
 
-//                Reservation reservation = EditReservationsTable.databaseToReservation(request2.getReserverIDreq(), request2.getRoomIDreq());
+                EditRequestsTable.deleteRequest(requestID);
+            }else if (reqtype == 3){
+                //modify request
 
-                EditReservationsTable.updateReservationDate(request2.getDatereq(), request2.getRoomIDreq());
+                EditReservationsTable.updateReservationDate(reqdate, roomid, reserverid);
 
                 EditRequestsTable.deleteRequest(requestID);
             }
