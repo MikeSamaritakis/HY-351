@@ -5,7 +5,7 @@ public class Employee {
     String EmployeeName;
     int Age;
     int Salary;
-    int HierarchicalPosition;
+    int Branch;
 
     public int getID() {
         return ID;
@@ -39,11 +39,11 @@ public class Employee {
         Salary = salary;
     }
 
-    public int getHierarchicalPosition() {
-        return HierarchicalPosition;
+    public int getBranch() {
+        return Branch;
     }
 
-    public void setHierarchicalPosition(int hierarchicalPosition) {
-        HierarchicalPosition = hierarchicalPosition;
+    public void setBranch(int Branch) {
+        Branch = Branch;
     }
 }

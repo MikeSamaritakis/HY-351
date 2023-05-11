@@ -24,7 +24,7 @@ public class EditApplicantsTable extends Applicant {
                 + " EmployeeName char(255),"
                 + " Age INTEGER,"
                 + " Salary INTEGER,"
-                + " HierarchicalPosition INTEGER,"
+                + " Branch INTEGER,"
                 + " Priority INTEGER "
                 + ")";
         stmt.execute(query);
@@ -45,7 +45,7 @@ public class EditApplicantsTable extends Applicant {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " applicants (ID, EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " applicants (ID, EmployeeName, Age, Salary, Branch, Priority)"
                     + " VALUES (321, 'mhtsos', 22, 750, 1, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery);
@@ -53,7 +53,7 @@ public class EditApplicantsTable extends Applicant {
             System.out.println("# The applicant was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " applicants (ID, EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " applicants (ID, EmployeeName, Age, Salary, Branch, Priority)"
                     + " VALUES (23, 'farmas', 21, 650, 2, 4)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
@@ -73,13 +73,13 @@ public class EditApplicantsTable extends Applicant {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " applicants (ID,EmployeeName, Age, Salary, HierarchicalPosition, Priority)"
+                    + " applicants (ID,EmployeeName, Age, Salary, Branch, Priority)"
                     + " VALUES ("
                     + "'" + applicant.getID() + "',"
                     + "'" + applicant.getEmployeeName() + "',"
                     + "'" + applicant.getAge() + "',"
                     + "'" + applicant.getSalary() + "',"
-                    + "'" + applicant.getHierarchicalPosition() + "',"
+                    + "'" + applicant.getBranch() + "',"
                     + "'" + applicant.getPriority() + "'"
                     + ")";
             //stmt.execute(table);

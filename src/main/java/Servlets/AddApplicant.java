@@ -29,7 +29,7 @@ public class AddApplicant extends HttpServlet {
         applicant.setEmployeeName(request.getParameter("newadminname"));
         applicant.setAge(Integer.parseInt(request.getParameter("newadminage")));
         applicant.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
-        applicant.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
+        applicant.setBranch(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
 
         try {
             if (EditApplicantsTable.databaseToApplicant(String.valueOf(applicant.getID())) != null) {

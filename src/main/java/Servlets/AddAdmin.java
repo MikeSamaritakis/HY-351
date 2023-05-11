@@ -24,7 +24,7 @@ public class AddAdmin extends HttpServlet {
         admin.setEmployeeName(request.getParameter("newadminname"));
         admin.setAge(Integer.parseInt(request.getParameter("newadminage")));
         admin.setSalary(Integer.parseInt(request.getParameter("newadminsalary")));
-        admin.setHierarchicalPosition(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
+        admin.setBranch(Integer.parseInt(request.getParameter("newadminhierarchicalposition")));
 
         try {
             if (EditAdminsTable.databaseToAdmin(String.valueOf(admin.getID())) != null) {

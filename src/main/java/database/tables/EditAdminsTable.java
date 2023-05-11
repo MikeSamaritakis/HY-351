@@ -23,7 +23,7 @@ public class EditAdminsTable extends Admin {
                 + " EmployeeName char(255),"
                 + " Age INTEGER,"
                 + " Salary INTEGER,"
-                + " HierarchicalPosition INTEGER"
+                + " Branch INTEGER"
                 + ")";
         stmt.execute(query);
         stmt.close();
@@ -43,7 +43,7 @@ public class EditAdminsTable extends Admin {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
+                    + " admins (ID, EmployeeName, Age, Salary, Branch)"
                     + " VALUES (1234, 'tsoukos', 22, 750, 1)";
             //stmt.execute(table);
             System.out.println(insertQuery);
@@ -51,7 +51,7 @@ public class EditAdminsTable extends Admin {
             System.out.println("# The admin was successfully added in the database.");
 
             String insertQuery2 = "INSERT INTO "
-                    + " admins (ID, EmployeeName, Age, Salary, HierarchicalPosition)"
+                    + " admins (ID, EmployeeName, Age, Salary, Branch)"
                     + " VALUES (4321, 'sfalmas', 21, 650, 2)";
             //stmt.execute(table);
             System.out.println(insertQuery2);
@@ -71,13 +71,13 @@ public class EditAdminsTable extends Admin {
             Statement stmt = con.createStatement();
 
             String insertQuery = "INSERT INTO "
-                    + " admins (ID,EmployeeName, Age, Salary, HierarchicalPosition)"
+                    + " admins (ID,EmployeeName, Age, Salary, Branch)"
                     + " VALUES ("
                     + "'" + admin.getID() + "',"
                     + "'" + admin.getEmployeeName() + "',"
                     + "'" + admin.getAge() + "',"
                     + "'" + admin.getSalary() + "',"
-                    + "'" + admin.getHierarchicalPosition() + "'"
+                    + "'" + admin.getBranch() + "'"
                     + ")";
             //stmt.execute(table);
             System.out.println(insertQuery);
